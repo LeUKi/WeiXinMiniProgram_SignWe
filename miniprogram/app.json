@@ -1,25 +1,28 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/userConsole/userConsole",
-    "pages/storageConsole/storageConsole",
-    "pages/databaseGuide/databaseGuide",
-    "pages/addFunction/addFunction",
-    "pages/deployFunctions/deployFunctions",
-    "pages/chooseLib/chooseLib",
-    "pages/openapi/openapi",
-    "pages/openapi/serverapi/serverapi",
-    "pages/openapi/callback/callback",
-    "pages/openapi/cloudid/cloudid",
-    "pages/im/im",
-    "pages/im/room/room"
+    "pages/history/history"
   ],
   "window": {
-    "backgroundColor": "#F6F6F6",
+    "backgroundColor": "#fefefe",
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#F6F6F6",
-    "navigationBarTitleText": "云开发 QuickStart",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "SignWe",
     "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "selectedColor":"#3498db",
+    "list": [{
+      "pagePath": "pages/index/index",
+      "text": "打卡",
+      "iconPath": "images/tab-1.png",
+      "selectedIconPath": "images/tab-1c.png"
+    }, {
+      "pagePath": "pages/history/history",
+      "text": "历史",
+      "iconPath": "images/tab-2.png",
+      "selectedIconPath": "images/tab-2c.png"
+    }]
   },
   "sitemapLocation": "sitemap.json",
   "style": "v2"
