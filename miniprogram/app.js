@@ -13,11 +13,26 @@ App({
         env: 'js-3ga9y80561e2a6f1',
         traceUser: true,
       })
+      var that = this;
+      wx.getSetting({
+        success(res) {
+          if (!res.authSetting['scope.userLocation']) {
+            wx.authorize({
+              scope: 'scope.userLocation'
+            })
+          }
+        }
+      })
+      wx.getLocation({
+        success(res) {
+          that.globalData.lat = res.latitude;
+          that.globalData.lon = res.longitude;
+        }
+      })
     }
-
-    
-    this.globalData = {
-      "test": "123"
-    }
+  },
+  globalData: {
+    lat: null,
+    lon: null
   }
 })

@@ -6,9 +6,11 @@
  latitude="21.15154729309082"
  show-location="{{true}}"
  circles="{{circles}}"
+ enable-zoom="{{false}}"
 >
 
 <button 
+bindtap="check"
 class="btn"
 type="primary"
 hover-stop-propagation
