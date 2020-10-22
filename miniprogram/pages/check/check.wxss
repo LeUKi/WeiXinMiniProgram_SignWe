@@ -1,0 +1,29 @@
+.root {
+  height: 900rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column
+}
+
+.chairs {
+  width: 200px;
+  height: 100px;
+}
+
+.freeText {
+  font-size: 120rpx;
+  color: #27ae60;
+}
+.WarningText{
+  font-size: 120rpx;
+  color: #FA5151;
+}
+.btn{
+  margin:20rpx
+}
+.tips{
+  margin: 15rpx;
+  font-size: 30rpx;
+  color: #ccc;
+}

@@ -2,6 +2,7 @@
   "pages": [
     "pages/index/index",
     "pages/history/history",
+    "pages/check/check",
     "pages/query/query"
   ],
   "window": {
@@ -12,6 +13,7 @@
     "navigationBarTextStyle": "black"
   },
   "tabBar": {
+    "borderStyle":"white",
     "selectedColor": "#3498db",
     "list": [
       {

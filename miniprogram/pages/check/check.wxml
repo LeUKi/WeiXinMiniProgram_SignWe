@@ -1,0 +1,18 @@
+<view class="root">
+  <text>这是 {{chair}} 号座位</text>
+  <view class="{{isFree?'freeText':'WarningText'}}">
+    {{isFree?"空闲":"正在使用"}}
+  </view>
+  <view>
+    <image class="chairs" src="/images/chairs.png"></image>
+  </view>
+  <view class="btn">
+    <button wx:if="{{isFree}}" type="primary">坐下</button>
+    <button wx:if="{{!isFree&&isMe}}" type="warn">签退</button>
+    <button wx:if="{{!isFree&&!isMe}}" disabled>他人已坐下</button>
+  </view>
+  <view class="tips">
+    <text wx:if="{{!isFree&&isMe}}">离开时请带上所有物品。</text>
+    <text wx:if="{{!isFree&&!isMe}}">若确定座位虚占，请联系管理员。</text>
+  </view>
+</view>
