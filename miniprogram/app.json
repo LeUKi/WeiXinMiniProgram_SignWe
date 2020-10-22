@@ -1,7 +1,8 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/history/history"
+    "pages/history/history",
+    "pages/query/query"
   ],
   "window": {
     "backgroundColor": "#fefefe",
@@ -11,18 +12,32 @@
     "navigationBarTextStyle": "black"
   },
   "tabBar": {
-    "selectedColor":"#3498db",
-    "list": [{
-      "pagePath": "pages/index/index",
-      "text": "打卡",
-      "iconPath": "images/tab-1.png",
-      "selectedIconPath": "images/tab-1c.png"
-    }, {
-      "pagePath": "pages/history/history",
-      "text": "历史",
-      "iconPath": "images/tab-2.png",
-      "selectedIconPath": "images/tab-2c.png"
-    }]
+    "selectedColor": "#3498db",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "打卡",
+        "iconPath": "images/tab-1.png",
+        "selectedIconPath": "images/tab-1c.png"
+      },
+      {
+        "pagePath": "pages/query/query",
+        "text": "座位",
+        "iconPath": "images/tab-3.png",
+        "selectedIconPath": "images/tab-3c.png"
+      },
+      {
+        "pagePath": "pages/history/history",
+        "text": "历史",
+        "iconPath": "images/tab-2.png",
+        "selectedIconPath": "images/tab-2c.png"
+      }
+    ]
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "您的地理位置将用于打卡."
+    }
   },
   "sitemapLocation": "sitemap.json",
   "style": "v2"

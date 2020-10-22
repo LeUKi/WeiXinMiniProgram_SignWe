@@ -1,2 +1,19 @@
-<!--pages/index/index.wxml-->
-<text>pages/index/index.wxml</text>
+<map
+ id="mymap"
+ name="local"
+ scale="17.5"
+ longitude="110.302223046875"
+ latitude="21.15154729309082"
+ show-location="{{true}}"
+ circles="{{circles}}"
+>
+
+<button 
+class="btn"
+type="primary"
+hover-stop-propagation
+disabled="{{!right}}"
+>
+{{right?"打卡":"未进入范围"}}
+</button>
+</map>
