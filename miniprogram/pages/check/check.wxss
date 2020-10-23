@@ -15,7 +15,7 @@
   font-size: 120rpx;
   color: #27ae60;
 }
-.WarningText{
+.unfreeText{
   font-size: 120rpx;
   color: #FA5151;
 }

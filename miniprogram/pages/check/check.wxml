@@ -1,18 +1,23 @@
 <view class="root">
   <text>这是 {{chair}} 号座位</text>
-  <view class="{{isFree?'freeText':'WarningText'}}">
+  <view class="{{isFree?'freeText':'unfreeText'}}">
     {{isFree?"空闲":"正在使用"}}
   </view>
-  <view>
-    <image class="chairs" src="/images/chairs.png"></image>
-  </view>
-  <view class="btn">
-    <button wx:if="{{isFree}}" type="primary">坐下</button>
-    <button wx:if="{{!isFree&&isMe}}" type="warn">签退</button>
-    <button wx:if="{{!isFree&&!isMe}}" disabled>他人已坐下</button>
-  </view>
-  <view class="tips">
-    <text wx:if="{{!isFree&&isMe}}">离开时请带上所有物品。</text>
-    <text wx:if="{{!isFree&&!isMe}}">若确定座位虚占，请联系管理员。</text>
-  </view>
+
+  <block wx:if="{{isFree}}">
+    <image class="chairs" src="/images/freeChair.png"></image>
+    <button class="btn" type="primary">坐下</button>
+  </block>
+
+  <block wx:if="{{!isFree&&isMe}}">
+    <image class="chairs" src="/images/unfreeChair.png"></image>
+    <button class="btn" type="warn">签退</button>
+    <text class="tips" wx:if="{{!isFree&&isMe}}">离开时请带上所有物品。</text>
+  </block>
+
+  <block wx:if="{{!isFree&&!isMe}}">
+    <image class="chairs" src="/images/unfreeChair.png"></image>
+    <button class="btn" disabled>他人已坐下</button>
+    <text class="tips">若确定座位虚占，请联系管理员。</text>
+  </block>
 </view>
