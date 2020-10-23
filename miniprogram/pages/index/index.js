@@ -21,6 +21,30 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.getSetting({
+      success(res) {
+        if (res.authSetting['scope.userLocation']) {
+          if (options.chair) {
+            wx.showLoading({
+              title: '加载定位中'
+            })
+            setTimeout(
+              function () {
+                wx.hideLoading()
+                wx.navigateTo({
+                  url: '/pages/check/check?chair=' + options.chair,
+                })
+              }
+              , 2000);
+          }
+        } else {
+          wx.showToast({
+            title: '无法定位',
+            icon: "none"
+          })
+        }
+      }
+    })
 
   },
   /**
@@ -67,10 +91,12 @@ Page({
     return s * 1000 <= this.data.circles[0].radius ? true : false
   },
   check: function () {
-    console.log("check");
-    wx.navigateTo({
-      url: "/pages/check/check?chair=4"
+    wx.scanCode({
+      onlyFromCamera: true,
     })
+    // wx.navigateTo({
+    //   url: "/pages/check/check?chair=4"
+    // })
   }
 
 })

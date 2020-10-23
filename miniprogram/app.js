@@ -28,26 +28,19 @@ App({
         name: 'getOpenid',
         success: res => {
           this.globalData.openid = res.result
+          //是否新人
+          wx.cloud.database().collection('check').where({
+            "_openid": this.globalData.openid
+          }).get({
+            success: res => {
+              this.globalData.isNewPeople =
+                res.data[0] == undefined ? true : false
+              console.log(this.globalData, res.data[0]);
+            }
+          })
         },
         fail: () => {
           this.globalData.openid = false
-        }
-      })
-      //是否新人
-      wx.cloud.database().collection('check').where({
-        "_openid": this.globalData.openid
-      }).get({
-        success: res => {
-          this.globalData.isNewPeople =
-            res.data[0] != null ? true : false
-          console.log(this.globalData,res.data);
-        }
-      })
-      //获取第一次位置
-      wx.getLocation({
-        success(res) {
-          that.globalData.lat = res.latitude;
-          that.globalData.lon = res.longitude;
         }
       })
     }

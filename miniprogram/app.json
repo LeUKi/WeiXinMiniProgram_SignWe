@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/history/history",
     "pages/check/check",
-    "pages/query/query"
+    "pages/query/query",
+    "pages/rename/rename"
   ],
   "window": {
     "backgroundColor": "#fefefe",
@@ -13,7 +14,7 @@
     "navigationBarTextStyle": "black"
   },
   "tabBar": {
-    "borderStyle":"white",
+    "borderStyle": "white",
     "selectedColor": "#3498db",
     "list": [
       {
@@ -38,7 +39,7 @@
   },
   "permission": {
     "scope.userLocation": {
-      "desc": "您的地理位置将用于打卡."
+      "desc": "打卡需要您的定位权限"
     }
   },
   "sitemapLocation": "sitemap.json",

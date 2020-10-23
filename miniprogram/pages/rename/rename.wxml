@@ -1,0 +1,36 @@
+<view class="page">
+  <view class="page-body">
+    <view>
+      <view class="weui-cells__title">班级</view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <input class="weui-input" bindinput="bindclass" placeholder="e.g. 电子1201" />
+        </view>
+      </view>
+
+      <view class="weui-cells__title">姓名</view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <input class="weui-input" maxlength="5" bindinput="bindname" placeholder="" />
+        </view>
+      </view>
+      <view class="weui-cells__title">提交后将不能修改，修改请联系管理员。</view>
+
+    </view>
+    <view></view>
+    <view></view>
+    <view></view>
+    <view>
+      <view class="box">
+
+        <switch type="checkbox" checked="{{yesIknow}}" bindchange="switch2Change"/>
+        我会遵守实验室各项条例
+
+      </view>
+      <button type="primary" bindtap="yes">
+        确认
+      </button>
+
+    </view>
+  </view>
+</view>
