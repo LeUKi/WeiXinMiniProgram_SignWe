@@ -6,7 +6,7 @@
 
   <block wx:if="{{isFree}}">
     <image class="chairs" src="/images/freeChair.png"></image>
-    <button class="btn" type="primary">坐下</button>
+    <button class="btn" bindtap="check" type="primary">坐下</button>
   </block>
 
   <block wx:if="{{!isFree&&isMe}}">

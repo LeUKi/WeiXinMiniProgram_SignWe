@@ -63,12 +63,14 @@ Page({
     var s = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a / 2), 2) + Math.cos(radLat1) * Math.cos(radLat2) * Math.pow(Math.sin(b / 2), 2)));
     s = s * 6378.137;
     s = Math.round(s * 10000) / 10000;
-    console.log(s * 1000, s * 1000 <= this.data.circles[0].radius ? true : false);
+    globalData.distence = s * 1000
     return s * 1000 <= this.data.circles[0].radius ? true : false
   },
   check: function () {
     console.log("check");
-
+    wx.navigateTo({
+      url: "/pages/check/check?chair=4"
+    })
   }
 
 })
