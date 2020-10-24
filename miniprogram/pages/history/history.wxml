@@ -1,2 +1,6 @@
-<!--pages/history/history.wxml-->
-<text>pages/history/history.wxml</text>
+<van-cell-group>
+  <van-cell wx:key="index" wx:for="{{me.check}}" title="{{item.howLong}}分钟" value="{{item.chair}}号座位"
+    label="{{item.sfinalStartTime}}" border="{{ false }}">
+  </van-cell>
+
+</van-cell-group>

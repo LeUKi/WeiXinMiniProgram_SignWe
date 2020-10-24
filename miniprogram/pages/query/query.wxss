@@ -1,1 +1,35 @@
 /* pages/query/query.wxss */
+.C {
+  width: 170rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.c {
+  width: 120rpx;
+  height: 120rpx;
+}
+
+.root {
+  height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.chairs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 30rpx 10rpx;
+}
+
+.tips {
+  margin: 15rpx;
+  font-size: 30rpx;
+  color: #ccc;
+}

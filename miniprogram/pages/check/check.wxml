@@ -6,7 +6,10 @@
 
   <block wx:if="{{isFree}}">
     <image class="chairs" src="/images/freeChair.png"></image>
-    <button class="btn" bindtap="check" type="primary">坐下</button>
+
+    <button class="btn" bindtap="check" type="primary" disabled="{{!(distence<=80)|| distence==null}}">坐下</button>
+    <text class="tips" wx:if="{{!(distence<=80)|| distence==null}}">未获取到位置信息或不在范围内</text>
+    <text class="tips" wx:if="{{!(distence<=80)|| distence==null}}">请返回主界面重新定位</text>
   </block>
 
   <block wx:if="{{!isFree&&isMe}}">

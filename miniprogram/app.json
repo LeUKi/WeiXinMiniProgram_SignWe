@@ -8,10 +8,11 @@
   ],
   "window": {
     "backgroundColor": "#fefefe",
-    "backgroundTextStyle": "light",
+    "backgroundTextStyle": "dark",
+    "backgroundColorTop":"#F0F3F6",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "SignWe",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "black"    
   },
   "tabBar": {
     "borderStyle": "white",
@@ -31,7 +32,7 @@
       },
       {
         "pagePath": "pages/history/history",
-        "text": "历史",
+        "text": "记录",
         "iconPath": "images/tab-2.png",
         "selectedIconPath": "images/tab-2c.png"
       }
@@ -43,5 +44,7 @@
     }
   },
   "sitemapLocation": "sitemap.json",
-  "style": "v2"
+  "style": "v2",
+  "useExtendedLib": {
+  }
 }

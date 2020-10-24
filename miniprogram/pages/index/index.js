@@ -93,10 +93,12 @@ Page({
   check: function () {
     wx.scanCode({
       onlyFromCamera: true,
+      success: function (res) {
+        console.log(res);
+        wx.reLaunch({
+          url: res.path
+        })
+      }
     })
-    // wx.navigateTo({
-    //   url: "/pages/check/check?chair=4"
-    // })
   }
-
 })

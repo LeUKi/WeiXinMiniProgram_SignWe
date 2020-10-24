@@ -1,66 +1,46 @@
-// pages/history/history.js
+// pages/history/history.js.
+const { globalData } = getApp()
+const db = wx.cloud.database()
+const _ = db.command
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    me: null,
+    sumtime: 50
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.getMe()
+
+
 
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
   onPullDownRefresh: function () {
-
+    this.getMe()
+    setTimeout(function () {
+      wx.stopPullDownRefresh()
+    }, 1000);
   },
 
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
+  getMe: function () {
+    wx.cloud.database().collection('check').where({
+      "_openid": "o8Mur5QAncbRzYbDj05yRhD_VRo4"
+    }).get({
+      success: res => {
+        console.log(res);
 
-  },
+        this.setData({
+          me: res.data[0]
+        })
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+      }
+    })
   }
 })

@@ -1,2 +1,12 @@
-<!--pages/query/query.wxml-->
-<text>pages/query/query.wxml</text>
+<view class="root">
+
+  <view class="chairs">
+    <view wx:for="{{chairs}}" wx:key="index" class="C">
+      <image wx:if="{{item}}" class="c" src="/images/freeC.png"></image>
+      <image wx:if="{{!item}}" class="c" src="/images/unfreeC.png"></image>
+      <text>{{index+1}}</text>
+    </view>
+  </view>
+  <view class="tips">绿色可座</view>
+
+</view>

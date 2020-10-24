@@ -22,7 +22,7 @@ Page({
     this.setData({
       class: e.detail.value
     })
-  }, 
+  },
   bindname: function (e) {
     this.setData({
       name: e.detail.value
@@ -30,7 +30,7 @@ Page({
   },
   switch2Change: function (e) {
     this.setData({
-      yesIknow: e.detail.value
+      yesIknow: e.detail
     })
   },
   yes: function () {
@@ -42,8 +42,12 @@ Page({
             finalCheck: true,
             name: this.data.name,
             class: this.data.class,
-            finalStartTime:new Date(),
-            finalDistence:0
+            finalStartTime: new Date(),
+            finalDistence: 0,
+            finalChair: null,
+            sfinalStartTime: null,
+            finalDistence: null,
+            daysum:0
           },
           success: function () {
             globalData.isNewPeople = false
