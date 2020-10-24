@@ -1,3 +1,10 @@
 .smallpng{
 
 }
+.nam{
+  font-size: 40rpx;
+  }
+.min{
+  font-size: 25rpx;
+  color: #ccc;
+}

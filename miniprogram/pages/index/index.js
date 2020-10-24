@@ -26,7 +26,8 @@ Page({
         if (res.authSetting['scope.userLocation']) {
           if (options.chair) {
             wx.showLoading({
-              title: '加载定位中'
+              title: '加载定位中', 
+              mask: true
             })
             setTimeout(
               function () {
@@ -35,7 +36,7 @@ Page({
                   url: '/pages/check/check?chair=' + options.chair,
                 })
               }
-              , 2000);
+              , 1000);
           }
         } else {
           wx.showToast({

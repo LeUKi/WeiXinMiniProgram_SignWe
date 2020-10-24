@@ -9,17 +9,12 @@ Page({
    */
   data: {
     me: null,
-    sumtime: 50
+    sumtime: null,
+    yesterday: [{}, {}, {}]
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
+  onShow: function () {
     this.getMe()
-
-
-
   },
 
   onPullDownRefresh: function () {
@@ -31,15 +26,21 @@ Page({
 
   getMe: function () {
     wx.cloud.database().collection('check').where({
-      "_openid": "o8Mur5QAncbRzYbDj05yRhD_VRo4"
+      "_openid": globalData.openid
     }).get({
       success: res => {
-        console.log(res);
-
         this.setData({
-          me: res.data[0]
+          me: res.data[0],
         })
-
+      }
+    })
+    wx.cloud.database().collection('chairs').where({
+      "_id": "yesterday"
+    }).get({
+      success: res => {
+        this.setData({
+          yesterday: res.data[0].yesterday
+        })
       }
     })
   }

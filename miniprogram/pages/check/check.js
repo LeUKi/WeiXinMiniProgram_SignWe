@@ -170,14 +170,17 @@ Page({
         }).update({
           data: {
             finalCheck: true,
+            daysum: daysumNow,
             check: _.push({
-              startTime: res.data[0].finalStartTime,
-              stopTime: nowtime,
-              howLong: t1,
-              daysum: daysumNow,
-              distence: res.data[0].finalDistence,
-              chair: res.data[0].finalChair,
-              sfinalStartTime: res.data[0].sfinalStartTime
+              each: [{
+                startTime: res.data[0].finalStartTime,
+                stopTime: nowtime,
+                howLong: t1,
+                distence: res.data[0].finalDistence,
+                chair: res.data[0].finalChair,
+                sfinalStartTime: res.data[0].sfinalStartTime
+              }],
+              position: 0
             })
           },
           success: function () {
