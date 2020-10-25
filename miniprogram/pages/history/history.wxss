@@ -1,10 +1,51 @@
-.smallpng{
-
-}
-.nam{
+.nam {
   font-size: 40rpx;
-  }
-.min{
+}
+
+.min {
+  display: block;
   font-size: 25rpx;
   color: #ccc;
+}
+
+.ystday {
+  white-space: nowrap;
+  display: flex;
+  background-color: #F0F3F6;
+}
+
+.in {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.ystdaypeop {
+  display: inline-block;
+  width: 200rpx;
+  border-radius: 10rpx;
+  background-color: #fff;
+  height: 100rpx;
+  margin: 10rpx;
+}
+
+.ystdaynopeop {
+  display: inline-block;
+  width: 730rpx;
+  border-radius: 10rpx;
+  background-color: #fff;
+  height: 100rpx;
+  margin: 10rpx;
+
+}
+
+.intxt {
+  color: #ccc;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

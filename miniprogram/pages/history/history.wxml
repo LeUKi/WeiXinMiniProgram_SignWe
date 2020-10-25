@@ -1,16 +1,27 @@
 <van-cell-group title="昨日排名（每晚10:45更新）">
-  <van-grid column-num="{{}}">
-    <van-grid-item use-slot wx:for="{{yesterday}}" wx:key="index">
-      <van-icon size="60rpx" name="medal-o" />
+  <scroll-view scroll-anchoring class="ystday" scroll-x>
+    <view class="ystdaynopeop" wx:if="{{yesterday.length==0}}">
+
+      <view class="intxt"><text>未有人上榜呢</text></view>
+
+    </view>
+    <view class="ystdaypeop" wx:for="{{yesterday}}" wx:key="index">
+      <view class="in">
+        <text class="nam">{{item.name}}</text>
+        <text class="min">{{item.daysum}}分钟</text></view>
+    </view>
+
+  </scroll-view>
+  <!-- <van-grid column-num="{{yesterday.length}}">
+    <van-grid-item class="ystdaybox" wx:for="{{yesterday}}" wx:key="index">
       <text class="nam">{{item.name}}</text>
       <text class="min">{{item.daysum}}分钟</text>
     </van-grid-item>
-  </van-grid>
+  </van-grid> -->
 </van-cell-group>
-<van-cell-group title="我的记录">
-  <van-cell title="座位 / 时间" value="今日总时长{{me.daysum}}分钟" border="{{ false }}">
-  </van-cell>
-  <van-cell center wx:key="index" wx:for="{{me.check}}" title="{{item.chair}}号座位" value="{{item.howLong}}分钟"
-    label="{{item.sfinalStartTime}}" border="{{ false }}">
-  </van-cell>
-</van-cell-group>
+
+<van-cell title="我的学习记录" value="今日总时长 {{me.daysum}} 分钟" border="{{ false }}">
+</van-cell>
+<van-cell center wx:key="index" wx:for="{{me.check}}" title="{{item.chair}}号座位" value="{{item.howLong}}分钟"
+  label="{{item.sfinalStartTime}}" border="{{ false }}">
+</van-cell>
