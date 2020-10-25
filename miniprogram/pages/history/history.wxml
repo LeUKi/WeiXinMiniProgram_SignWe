@@ -1,5 +1,5 @@
-<van-cell-group title="昨日前三排名">
-  <van-grid column-num="3">
+<van-cell-group title="昨日排名（每晚10:45更新）">
+  <van-grid column-num="{{}}">
     <van-grid-item use-slot wx:for="{{yesterday}}" wx:key="index">
       <van-icon size="60rpx" name="medal-o" />
       <text class="nam">{{item.name}}</text>
@@ -8,7 +8,7 @@
   </van-grid>
 </van-cell-group>
 <van-cell-group title="我的记录">
-  <van-cell title="座位 / 时间" value="总时长{{me.daysum}}分钟" border="{{ false }}">
+  <van-cell title="座位 / 时间" value="今日总时长{{me.daysum}}分钟" border="{{ false }}">
   </van-cell>
   <van-cell center wx:key="index" wx:for="{{me.check}}" title="{{item.chair}}号座位" value="{{item.howLong}}分钟"
     label="{{item.sfinalStartTime}}" border="{{ false }}">
