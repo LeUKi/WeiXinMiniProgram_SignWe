@@ -25,22 +25,16 @@ App({
       })
       //获取openid
       wx.cloud.callFunction({
-        name: 'getOpenid',
+        name: 'isNewGuys',
         success: res => {
-          this.globalData.openid = res.result
-          //是否新人
-          wx.cloud.database().collection('check').where({
-            "_openid": this.globalData.openid
-          }).get({
-            success: res => {
-              this.globalData.isNewPeople =
-                res.data[0] == undefined ? true : false
-              console.log(this.globalData, res.data[0]);
-            }
-          })
+          this.globalData.openid = res.result.openid
+          this.globalData.isNewPeople = res.result.isNewGuys
         },
-        fail: () => {
-          this.globalData.openid = false
+        fail: (res) => {
+          wx.showToast({
+            title: '未登入，部分操作将受限',
+            icon: "none"
+          })
         }
       })
     }

@@ -75,10 +75,10 @@
           "scene": null
         },
         {
-          "id": -1,
+          "id": 2,
           "name": "pages/check/check",
           "pathName": "pages/check/check",
-          "query": "chair=1",
+          "query": "chair=1&noDistence",
           "scene": 1011
         },
         {

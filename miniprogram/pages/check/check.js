@@ -20,19 +20,27 @@ Page({
     })
     this.setData({
       distence: globalData.distence,
-      chair: options.chair
+      chair: Number(options.chair)
     })
+    //判断参数
+    if (options.noDistence != undefined) {
+      this.setData({
+        distence: 0.123456789
+      })
+    }
+
+
 
     //座位查询
     db.collection('chairs').where({ _id: "chairs" }).get({
       success: (res) => {
+
         db.collection('chairs').where({ _id: "openid" }).get({
           success: (res1) => {
-            console.log(res1);
+
             this.setData({
-              chair: options.chair,
-              isFree: res.data[0].chairs[options.chair - 1],
-              isMe: globalData.openid == res1.data[0].openid[options.chair - 1]
+              isFree: res.data[0].chairs[Number(options.chair) - 1],
+              isMe: globalData.openid == res1.data[0].openid[Number(options.chair) - 1]
             })
             wx.hideLoading()
           }
@@ -40,20 +48,22 @@ Page({
       }
     })
   },
-  check: function () {
+  check: async function () {
     const that = this
-    wx.showLoading({
-      title: '正在确认...',
+    await wx.showLoading({
+      title: '正在确认',
       mask: true
     })
     //落座前检查
     if (globalData.isNewPeople) {
       //实名检查
+      wx.hideLoading()
       wx.showModal({
         title: "你还没有登记",
         content: "这是必要的记录。",
         confirmText: "去实名",
         success: (res) => {
+          console.log(1);
           if (res.confirm) {
             wx.navigateTo({
               url: "/pages/rename/rename"
@@ -87,67 +97,29 @@ Page({
   seatdown: function () {
     const that = this
     wx.showLoading({
-      title: '正在占领座位...',
+      title: '正在占领座位',
       mask: true
     })
-    //拉取座位信息
-    db.collection('chairs').where({ _id: "chairs" }).get({
-      success: (res) => {
-        var newC = res.data[0].chairs
-        newC[this.data.chair - 1] = false
-        var nowTime = new Date()
+    const T = new Date()
+    const sT = this.formatDate(T)
+    //更新占座与座位信息
+    wx.cloud.callFunction({
+      name: 'seatdown',
+      data: {
+        time: T,
+        distence: globalData.distence,
+        finalChair: this.data.chair,
+        sfinalStartTime: sT
 
-        //更新个人信息
-        db.collection('check').where({ "_openid": globalData.openid }).update({
-          data: {
-            finalStartTime: nowTime,
-            finalDistence: globalData.distence,
-            finalCheck: false,
-            finalChair: this.data.chair,
-            sfinalStartTime: this.formatDate(nowTime)
-          },
-          success: function () {
-            console.log("//更新个人信息");
-
-            //获取占座信息
-            db.collection('chairs').where({ _id: "openid" }).get({
-              success: (res1) => {
-                console.log(res1);
-                console.log(1);
-                var newI = res1.data[0].openid
-                console.log(2);
-                newI[that.data.chair - 1] = globalData.openid
-                console.log(2);
-
-                console.log("//获取占座信息");
-
-
-                //更新占座与座位信息
-                wx.cloud.callFunction({
-                  name: 'seatdown',
-                  data: {
-                    c: newC,
-                    i: newI
-                  },
-                  success: function () {
-                    console.log("//更新占座与座位信息");
-
-
-                    //刷新
-                    wx.hideLoading()
-                    wx.redirectTo({
-                      url: '/pages/check/check?chair=' + that.data.chair
-                    })
-                  }
-                })
-              }
-            })
-
-          }
+      },
+      success: function () {
+        //刷新
+        wx.hideLoading()
+        wx.redirectTo({
+          url: '/pages/check/check?chair=' + that.data.chair
         })
       }
     })
-
   },
   signout: function () {
     wx.showLoading({

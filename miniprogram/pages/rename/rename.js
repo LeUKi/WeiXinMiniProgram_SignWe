@@ -36,27 +36,31 @@ Page({
   yes: function () {
     if (this.data.yesIknow) {
       if (this.data.class.replace(/\s*/g, "") != "" && this.data.name.replace(/\s*/g, "") != "") {
-        db.collection('check').add({
+        wx.showLoading({
+          title: '正在创建档案',
+          mask: true
+        })
+        wx.cloud.callFunction({
+          name: 'newOne',
           data: {
-            check: [],
-            finalCheck: true,
             name: this.data.name,
             class: this.data.class,
-            finalStartTime: new Date(),
-            finalDistence: 0,
-            finalChair: null,
-            sfinalStartTime: null,
-            finalDistence: null,
-            daysum:0
+            time: Date()
           },
-          success: function () {
+          success: res => {
+            wx.hideLoading()
             globalData.isNewPeople = false
             wx.navigateBack({
               delta: 1
             })
+          },
+          fail: (res) => {
+            wx.showToast({
+              title: '未完成，请重试',
+              icon: "none"
+            })
           }
         })
-
       } else {
         wx.showToast({
           title: '请完整填写',
