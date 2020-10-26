@@ -7,6 +7,9 @@ const db = cloud.database()
 let newC
 let newI
 exports.main = async (event, context) => {
+  if (event.c==undefined) {
+  
+  
   const wxContext = cloud.getWXContext()
 
 
@@ -14,11 +17,12 @@ exports.main = async (event, context) => {
   console.log(oldC);
   newC = oldC.data[0].chairs
   newC[event.finalChair - 1] = false
+console.log(event,);
 
 
   await db.collection('check').where({ "_openid": wxContext.OPENID }).update({
     data: {
-      finalStartTime: event.time,
+      finalStartTime: new Date(event.time),
       finalDistence: event.distence,
       finalCheck: false,
       finalChair: event.finalChair,
@@ -41,7 +45,13 @@ exports.main = async (event, context) => {
       openid: newI
     }
   })
-
+  }else{
+    await db.collection('chairs').where({ _id: "chairs" }).update({
+      data: {
+        chairs: event.c
+      }
+    })
+  }
   return 666
 
 }

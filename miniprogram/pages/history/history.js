@@ -10,7 +10,12 @@ Page({
   data: {
     me: null,
     sumtime: null,
-    yesterday: [{}, {}, {}]
+    yesterday: [
+      { name: '第一' },
+      { name: '第二' },
+      { name: '第三' },
+      { name: '第四' },
+      { name: '第五' }]
   },
 
   onShow: function () {

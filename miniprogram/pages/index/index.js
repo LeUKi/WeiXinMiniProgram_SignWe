@@ -21,32 +21,27 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.getSetting({
-      success(res) {
-        if (res.authSetting['scope.userLocation']) {
-          if (options.chair) {
-            wx.showLoading({
-              title: '加载定位中', 
-              mask: true
+    if (options.chair) {
+      wx.showLoading({
+        title: '加载定位中',
+        mask: true
+      })
+      wx.getSetting({
+        success(res) {
+          wx.hideLoading()
+          if (res.authSetting['scope.userLocation']) {
+            wx.navigateTo({
+              url: '/pages/check/check?chair=' + options.chair,
             })
-            setTimeout(
-              function () {
-                wx.hideLoading()
-                wx.navigateTo({
-                  url: '/pages/check/check?chair=' + options.chair,
-                })
-              }
-              , 1000);
+          } else {
+            wx.showToast({
+              title: '未取得定位权限',
+              icon: "none"
+            })
           }
-        } else {
-          wx.showToast({
-            title: '无法定位',
-            icon: "none"
-          })
         }
-      }
-    })
-
+      })
+    }
   },
   /**
    * 生命周期函数--监听页面显示

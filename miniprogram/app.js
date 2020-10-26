@@ -14,15 +14,15 @@ App({
         traceUser: true,
       })
       var that = this;
-      wx.getSetting({
-        success(res) {
-          if (!res.authSetting['scope.userLocation']) {
-            wx.authorize({
-              scope: 'scope.userLocation'
-            })
-          }
-        }
-      })
+      // wx.getSetting({
+      //   success(res) {
+      //     if (!res.authSetting['scope.userLocation']) {
+      //       wx.authorize({
+      //         scope: 'scope.userLocation'
+      //       })
+      //     }
+      //   }
+      // })
       //获取openid
       wx.cloud.callFunction({
         name: 'isNewGuys',

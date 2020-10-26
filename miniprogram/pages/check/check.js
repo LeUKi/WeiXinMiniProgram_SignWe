@@ -100,6 +100,7 @@ Page({
       title: '正在占领座位',
       mask: true
     })
+
     const T = new Date()
     const sT = this.formatDate(T)
     //更新占座与座位信息
@@ -126,71 +127,23 @@ Page({
       title: '正在签退...',
       mask: true
     })
+    /////////////////////////////////////
     const that = this
-    db.collection('check').where({ "_openid": globalData.openid }).get({
-      success: function (res) {
-        console.log(res.data[0]);
-
-
-        var nowtime = new Date()
-        var t1 = nowtime - res.data[0].finalStartTime
-        t1 = t1 % (3600 * 1000)
-        t1 = Math.floor(t1 / (60 * 1000))
-        var daysumNow = res.data[0].daysum + t1
-        db.collection('check').where({
-          "_openid": globalData.openid
-        }).update({
-          data: {
-            finalCheck: true,
-            daysum: daysumNow,
-            check: _.push({
-              each: [{
-                startTime: res.data[0].finalStartTime,
-                stopTime: nowtime,
-                howLong: t1,
-                distence: res.data[0].finalDistence,
-                chair: res.data[0].finalChair,
-                sfinalStartTime: res.data[0].sfinalStartTime
-              }],
-              position: 0
-            })
-          },
-          success: function () {
-
-
-            //拉取座位信息
-            db.collection('chairs').where({ _id: "chairs" }).get({
-              success: (res) => {
-                var newC = res.data[0].chairs
-                newC[that.data.chair - 1] = true
-
-                //更新占座与座位信息
-                wx.cloud.callFunction({
-                  name: 'seatdown',
-                  data: {
-                    c: newC,
-                    i: null
-                  },
-                  success: function () {
-                    console.log("//更新占座与座位信息");
-
-
-                    //刷新
-                    wx.hideLoading()
-                    wx.redirectTo({
-                      url: '/pages/check/check?chair=' + that.data.chair
-                    })
-                  }
-                })
-
-
-
-              }
-            })
-          }
+    const T = new Date()
+    wx.cloud.callFunction({
+      name: 'signout',
+      data: {
+        time: T
+      },
+      success: function () {
+        //刷新
+        wx.hideLoading()
+        wx.redirectTo({
+          url: '/pages/check/check?chair=' + that.data.chair
         })
       }
     })
+    /////////////////////////////////////
   },
   formatDate: function (value) {
     var time = value;

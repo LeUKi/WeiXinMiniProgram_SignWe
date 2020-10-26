@@ -78,7 +78,7 @@
           "id": 2,
           "name": "pages/check/check",
           "pathName": "pages/check/check",
-          "query": "chair=1&noDistence",
+          "query": "chair=2&noDistence",
           "scene": 1011
         },
         {
@@ -89,7 +89,7 @@
           "scene": null
         },
         {
-          "id": -1,
+          "id": 4,
           "name": "pages/index/index",
           "pathName": "pages/index/index",
           "query": "chair=1",

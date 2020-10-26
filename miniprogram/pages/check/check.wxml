@@ -23,5 +23,6 @@
     <image class="chairs" src="/images/unfreeChair.png"></image>
     <button class="btn" disabled>他人已坐下</button>
     <text class="tips">若确定座位虚占，请联系管理员。</text>
+    <button type="primary" size="mini" open-type="contact">联系师兄</button>
   </block>
 </view>
