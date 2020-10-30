@@ -1,0 +1,19 @@
+.out1 {
+  width: 500rpx;
+  padding: 30rpx;
+}
+
+.t1 {
+  font-size: 45rpx;
+  margin-left: 20rpx;
+}
+
+.t2 {
+  font-size: 25rpx;
+  color: grey;
+  margin: 20rpx;
+}
+.t3{
+  font-size: 35rpx;
+
+}

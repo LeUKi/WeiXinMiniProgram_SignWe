@@ -11,8 +11,11 @@
   height: 120rpx;
 }
 
+.nts{
+  text-align: center;
+}
 .root {
-  height: 100vh;
+  height: 100%;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
@@ -29,7 +32,6 @@
 }
 
 .tips {
-  margin: 15rpx;
   font-size: 30rpx;
   color: #ccc;
 }

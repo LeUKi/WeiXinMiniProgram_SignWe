@@ -1,5 +1,6 @@
 {
   "usingComponents": {
+    "van-notice-bar": "@vant/weapp/notice-bar/index"
   },
   "enablePullDownRefresh":true
 }

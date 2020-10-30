@@ -7,7 +7,7 @@ const _ = db.command
 // 云函数入口函数
 let t1
 let daysumNow
-exports.main = async (event, context) => {  
+exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext()
 
   const res = await db.collection('check').where({ "_openid": wxContext.OPENID }).get()
@@ -21,6 +21,7 @@ exports.main = async (event, context) => {
   }).update({
     data: {
       finalCheck: true,
+      allsum: _.inc(t1),
       daysum: daysumNow,
       check: _.push({
         each: [{

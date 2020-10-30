@@ -1,5 +1,7 @@
 // pages/index/index.js
 const { globalData } = getApp()
+const db = wx.cloud.database()
+const _ = db.command
 Page({
 
   /**
@@ -13,8 +15,11 @@ Page({
       radius: 80,
       fillColor: '#00000011',
       color: "#74b9ff",
-      strokeWidth: "4"
-    }]
+      strokeWidth: "4",
+    }],
+    notice: { text: "null" },
+
+
   },
 
   /**
@@ -47,8 +52,22 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    wx.startLocationUpdate();
-    wx.onLocationChange(this._locationChangeFn);
+    if (globalData.isOP) {
+      this.setData({
+        right: true,
+        notice: { text: "当前为管理员状态，可无视范围打卡" }
+      })
+    } else {
+      wx.startLocationUpdate();
+      wx.onLocationChange(this._locationChangeFn);
+      db.collection('chairs').where({ _id: "notic" }).get({
+        success: (res) => {
+          this.setData({
+            notice: res.data[0].notice
+          })
+        }
+      })
+    }
   },
 
   /**
@@ -56,13 +75,6 @@ Page({
    */
   onHide: function () {
     wx.offLocationChange(this._locationChangeFn);
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
   },
 
   _locationChangeFn: function (res) {

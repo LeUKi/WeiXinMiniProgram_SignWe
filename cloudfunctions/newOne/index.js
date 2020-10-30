@@ -15,12 +15,13 @@ exports.main = async (event, context) => {
       finalCheck: true,
       name: event.name,
       class: event.class,
-      finalStartTime: event.time,
+      finalStartTime: null,
       finalDistence: 0,
       finalChair: null,
       sfinalStartTime: null,
       finalDistence: null,
-      daysum: 0
+      daysum: 0,
+      allsum: 0
     }
   })
 

@@ -8,7 +8,7 @@
  circles="{{circles}}"
  enable-zoom="{{false}}"
 >
-
+<van-notice-bar wx:if="{{notice.text!='null'}}" color="{{notice.color}}" background="{{notice.background}}" left-icon="{{notice.icon}}" text="{{notice.text}}" />
 <button 
 bindtap="check"
 class="btn"
@@ -19,3 +19,4 @@ disabled="{{!right}}"
 {{right?"打卡":"未进入范围"}}
 </button>
 </map>
+

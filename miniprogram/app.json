@@ -4,7 +4,8 @@
     "pages/history/history",
     "pages/check/check",
     "pages/query/query",
-    "pages/rename/rename"
+    "pages/rename/rename",
+    "pages/admin/admin"
   ],
   "window": {
     "backgroundColor": "#fefefe",

@@ -1,6 +1,6 @@
 //app.js
 App({
-  onLaunch: function () {
+  onLaunch: async function () {
 
     if (!wx.cloud) {
       console.error('请使用 2.2.3 或以上的基础库以使用云能力')
@@ -24,6 +24,13 @@ App({
       //   }
       // })
       //获取openid
+      await wx.cloud.callFunction({
+        name: 'isOP',
+        success: (res) => {
+          this.globalData.isOP = res.result
+          this.globalData.distence = 0
+        }
+      })
       wx.cloud.callFunction({
         name: 'isNewGuys',
         success: res => {
@@ -44,6 +51,7 @@ App({
     lon: null,
     distence: null,
     openid: null,
-    isNewPeople: null
+    isNewPeople: null,
+    isOP: false
   }
 })

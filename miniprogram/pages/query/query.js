@@ -5,7 +5,9 @@ const _ = db.command
 Page({
 
   data: {
-    chairs: []
+    chairs: [],
+    isOP: false,
+
   },
 
   onLoad: function (options) {
@@ -14,6 +16,9 @@ Page({
   },
   onShow: function () {
     wx.startPullDownRefresh()
+    this.setData({
+      isOP: globalData.isOP
+    })
   },
   onPullDownRefresh: function () {
     this.getC()
@@ -25,10 +30,47 @@ Page({
     db.collection('chairs').where({ _id: "chairs" }).get({
       success: (res) => {
         this.setData({
-          chairs: res.data[0].chairs
+          chairs: res.data[0].chairs,
+
         })
 
       }
     })
+  },
+  onClose: function () {
+    this.setData({
+      show: false
+    })
+  }
+  ,
+  clickme: function (res) {
+    if (this.data.isOP) {
+      const num = res.currentTarget.dataset.num + 1
+      wx.showModal({
+        title: num + ' 号座位',
+        content: '是否被恶意占用，确认可重置此座位状态',
+        cancelText: "手滑了",
+        confirmText: "我确定",
+        confirmColor: "#FA5151",
+        cancelColor: "#999999",
+        success(res1) {
+          if (res1.confirm) {
+            wx.showLoading({
+              title: '正在重置',
+            })
+            wx.cloud.callFunction({
+              name: 'forcesignout',
+              data: {
+                num: num
+              },
+              success: res => {
+                wx.startPullDownRefresh()
+                wx.hideLoading()
+              }
+            })
+          }
+        }
+      })
+    }
   }
 })

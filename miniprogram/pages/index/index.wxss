@@ -5,5 +5,5 @@
   display: flex; 
 }
 .btn{
-  top: 80vh;
+  top: 75vh;
 }

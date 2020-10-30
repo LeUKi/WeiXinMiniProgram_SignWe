@@ -78,7 +78,7 @@
           "id": 2,
           "name": "pages/check/check",
           "pathName": "pages/check/check",
-          "query": "chair=2&noDistence",
+          "query": "chair=2",
           "scene": 1011
         },
         {
@@ -106,6 +106,13 @@
           "id": -1,
           "name": "pages/history/history",
           "pathName": "pages/history/history",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "admin",
+          "pathName": "pages/admin/admin",
           "query": "",
           "scene": null
         }
