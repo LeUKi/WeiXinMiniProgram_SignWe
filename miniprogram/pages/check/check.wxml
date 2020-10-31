@@ -17,6 +17,7 @@
     <button class="btn" bindtap="signout" type="warn">签退</button>
     <text class="tips">每晚10:45将重置状态，请注意签退时间。</text>
     <text class="tips">离开时请带上所有物品。</text>
+    <text class="tips">可扫任意座位码进入签退页面</text>
   </block>
 
   <block wx:if="{{!isFree&&!isMe}}">

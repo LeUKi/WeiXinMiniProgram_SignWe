@@ -7,7 +7,6 @@ const _ = db.command
 // 云函数入口函数
 
 exports.main = async (event, context) => {
-  console.log(1);
 
   const res1 = await db.collection('chairs').where({ _id: "openid" }).get()
   console.log(res1);

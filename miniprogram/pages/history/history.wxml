@@ -1,4 +1,7 @@
-<van-cell-group title="昨日排名（每晚10:45更新）">
+<van-cell title="昨日排名(晚10:45更新)" value="总排名" is-link link-type="navigateTo"
+  url="/pages/admin/admin" border="{{ false }}">
+</van-cell>
+<van-cell-group>
   <scroll-view scroll-anchoring class="ystday" scroll-x>
     <view class="ystdaynopeop" wx:if="{{yesterday.length==0}}">
 

@@ -57,6 +57,7 @@ Page({
           if (res1.confirm) {
             wx.showLoading({
               title: '正在重置',
+              mask: true
             })
             wx.cloud.callFunction({
               name: 'forcesignout',

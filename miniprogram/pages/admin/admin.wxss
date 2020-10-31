@@ -13,7 +13,8 @@
   color: grey;
   margin: 20rpx;
 }
-.t3{
-  font-size: 35rpx;
 
+.t3 {
+  font-size: 35rpx;
+  margin: 10rpx;
 }

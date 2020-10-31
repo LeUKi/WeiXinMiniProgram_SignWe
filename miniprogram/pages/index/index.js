@@ -52,13 +52,13 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    wx.startLocationUpdate();
     if (globalData.isOP) {
       this.setData({
         right: true,
         notice: { text: "当前为管理员状态，可无视范围打卡" }
       })
     } else {
-      wx.startLocationUpdate();
       wx.onLocationChange(this._locationChangeFn);
       db.collection('chairs').where({ _id: "notic" }).get({
         success: (res) => {
@@ -81,7 +81,6 @@ Page({
     this.setData({
       right: this.juli(res.latitude, res.longitude)
     })
-    console.log(globalData)
 
   },
   // 计算两地之间的距离

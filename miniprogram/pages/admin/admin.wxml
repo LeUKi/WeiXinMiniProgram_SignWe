@@ -1,4 +1,4 @@
-<van-cell-group title="档案（以总时长降序）">
+<van-cell-group title="总排名（以总时长降序）">
   <van-cell center wx:for="{{all}}" wx:key="index" is-link value="总时长：{{item.allsum}}分钟"
     label="打卡{{item.check.length}}次" border="{{ false }}" bind:click="Clk" data-person="{{item}}">
     <view slot="title">
@@ -8,10 +8,16 @@
     </view>
   </van-cell>
 </van-cell-group>
-<van-popup show="{{ show }}" round position="center" custom-style="height: 20%" bind:close="onClose">
+<van-popup show="{{ show }}" round position="center" custom-style="height: 45%" bind:close="onClose">
   <view class="out1">
-
+    <text class="t1">{{outName}}</text>
+    <text class="t2">{{outClass}}</text>
     <van-divider />
-
+    <view class="t33">
+      <view class="t3">上次打卡：{{outsfinalStartTime}}</view>
+      <view class="t3">昨日时长：{{outdaysum}}</view>
+      <view class="t3">总计时长：{{outallsum}}</view>
+      <view class="t3">正在学习：{{outfinalCheck?"否":"是"}}</view>
+    </view>
   </view>
 </van-popup>
