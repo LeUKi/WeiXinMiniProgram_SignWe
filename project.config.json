@@ -26,11 +26,13 @@
       "disablePlugins": [],
       "outputPath": ""
     },
+    "enableEngineNative": false,
     "useIsolateContext": true,
     "useCompilerModule": true,
     "userConfirmedUseCompilerModuleSwitch": false,
     "packNpmManually": false,
-    "packNpmRelationList": []
+    "packNpmRelationList": [],
+    "minifyWXSS": true
   },
   "appid": "wx8c1582af5601cf17",
   "projectname": "SignMe",
@@ -40,26 +42,21 @@
   "cloudfunctionTemplateRoot": "cloudfunctionTemplate",
   "condition": {
     "search": {
-      "current": -1,
       "list": []
     },
     "conversation": {
-      "current": -1,
       "list": []
     },
     "plugin": {
-      "current": -1,
       "list": []
     },
     "game": {
       "list": []
     },
     "gamePlugin": {
-      "current": -1,
       "list": []
     },
     "miniprogram": {
-      "current": 0,
       "list": [
         {
           "id": -1,
@@ -78,7 +75,7 @@
           "id": 2,
           "name": "pages/check/check",
           "pathName": "pages/check/check",
-          "query": "chair=2",
+          "query": "chair=3",
           "scene": 1011
         },
         {

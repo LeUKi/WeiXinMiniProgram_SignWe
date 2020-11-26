@@ -10,7 +10,7 @@ const _ = db.command
 exports.main = async (event, context) => {
   var newC = []
   var yesterday = []
-  for (let i = 0; i < 20; i++) {
+  for (let i = 0; i < 24; i++) {
     newC[i] = true
   }
   const a = await db.collection('check').where({

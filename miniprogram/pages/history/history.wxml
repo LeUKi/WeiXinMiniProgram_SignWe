@@ -1,4 +1,4 @@
-<van-cell title="昨日排名(晚10:45更新)" value="总排名" is-link link-type="navigateTo"
+<van-cell title="昨日排名(晚11:30更新)" value="总排名" is-link link-type="navigateTo"
   url="/pages/admin/admin" border="{{ false }}">
 </van-cell>
 <van-cell-group>
