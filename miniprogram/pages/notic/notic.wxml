@@ -1,0 +1,12 @@
+<van-cell-group class="c1">
+  <van-cell>
+    <view slot="title">
+      <view class="van-cell-text">
+        <rich-text nodes="{{notice2}}"></rich-text>
+      </view>
+    </view>
+  </van-cell>
+</van-cell-group>
+<van-cell-group title="清洁安排">
+  <van-steps steps="{{ steps }}" direction="vertical" active-color="#3498db" />
+</van-cell-group>

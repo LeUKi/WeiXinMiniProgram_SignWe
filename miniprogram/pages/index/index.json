@@ -1,5 +1,8 @@
 {
   "usingComponents": {
-    "van-notice-bar": "@vant/weapp/notice-bar/index"
-  }
+    "van-notice-bar": "@vant/weapp/notice-bar/index",
+    "van-nav-bar": "@vant/weapp/nav-bar/index"
+  },
+  "navigationBarTitleText": "图灵 TEAM",
+  "navigationStyle": "custom"
 }

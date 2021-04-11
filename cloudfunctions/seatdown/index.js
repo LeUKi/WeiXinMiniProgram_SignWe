@@ -5,6 +5,7 @@ cloud.init()
 const db = cloud.database()
 // 云函数入口函数
 let newC
+let newN
 let newI
 exports.main = async (event, context) => {
   if (event.c==undefined) {
@@ -12,12 +13,24 @@ exports.main = async (event, context) => {
   
   const wxContext = cloud.getWXContext()
 
+    const oldN = await db.collection('chairs').where({ _id: "names" }).get()
+    newN = oldN.data[0].names
+    const resN = await db.collection('check').where({
+      "_openid": wxContext.OPENID
+    }).get()
+    newN[event.finalChair - 1] = resN.data[0].name
+    await db.collection('chairs').where({ _id: "names" }).update({
+      data: {
+        names: newN
+      }
+    })
+
 
   const oldC = await db.collection('chairs').where({ _id: "chairs" }).get()
   console.log(oldC);
   newC = oldC.data[0].chairs
   newC[event.finalChair - 1] = false
-console.log(event,);
+  console.log(event,);
 
 
   await db.collection('check').where({ "_openid": wxContext.OPENID }).update({

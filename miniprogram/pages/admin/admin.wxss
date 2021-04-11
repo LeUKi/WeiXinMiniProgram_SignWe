@@ -1,20 +1,48 @@
 .out1 {
-  width: 500rpx;
-  padding: 30rpx;
+  width: 100%;
+  padding-top: 25rpx;
+  height: 100%;
+  overflow: hidden;
 }
 
 .t1 {
   font-size: 45rpx;
-  margin-left: 20rpx;
+  margin-left: 30rpx;
+
 }
 
 .t2 {
   font-size: 25rpx;
   color: grey;
-  margin: 20rpx;
+  margin-left: 20rpx;
 }
 
-.t3 {
+.li {
+  height: 100%;
+  overflow: scroll;
+}
+.t33{
+  padding:50rpx;
   font-size: 35rpx;
-  margin: 10rpx;
+  margin-bottom: 20rpx;
+}
+.t31 {
+  float: left;
+}
+.t32{
+  float: right;
+}
+.fr{
+  float: right;
+}
+.p0 {
+  color: rgb(231, 197, 0);
+}
+
+.p1 {
+  color: rgb(197, 196, 196);
+}
+
+.p2 {
+  color: rgb(223, 104, 61);
 }

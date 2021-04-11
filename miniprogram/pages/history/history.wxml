@@ -10,7 +10,7 @@
     </view>
     <view class="ystdaypeop" wx:for="{{yesterday}}" wx:key="index">
       <view class="in">
-        <text class="nam">{{item.name}}</text>
+        <text class="nam p{{index}}">{{item.name}}</text>
         <text class="min">{{item.daysum}}分钟</text></view>
     </view>
 

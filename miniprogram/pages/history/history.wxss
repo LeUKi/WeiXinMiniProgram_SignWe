@@ -49,3 +49,14 @@
   justify-content: center;
   align-items: center;
 }
+.p0 {
+  color: rgb(231, 197, 0);
+}
+
+.p1 {
+  color: rgb(197, 196, 196);
+}
+
+.p2 {
+  color: rgb(223, 104, 61);
+}

@@ -14,34 +14,44 @@ App({
         traceUser: true,
       })
       var that = this;
-      // wx.getSetting({
-      //   success(res) {
-      //     if (!res.authSetting['scope.userLocation']) {
-      //       wx.authorize({
-      //         scope: 'scope.userLocation'
-      //       })
-      //     }
-      //   }
-      // })
-      //获取openid
-      await wx.cloud.callFunction({
-        name: 'isOP',
-        success: (res) => {
-          this.globalData.isOP = res.result
-          this.globalData.distence = 0
+      wx.getSetting({
+        success(res) {
+          if (!res.authSetting['scope.userLocation']) {
+            wx.authorize({
+              scope: 'scope.userLocation'
+            })
+          }
         }
       })
-      wx.cloud.callFunction({
+      wx.checkSession({
+        success() {
+          //session_key 未过期，并且在本生命周期一直有效
+        },
+        fail() {
+          // session_key 已经失效，需要重新执行登录流程
+          wx.login() //重新登录
+        },
+        complete(res) {
+          console.log(res);
+        }
+      })
+
+      await wx.cloud.callFunction({
         name: 'isNewGuys',
         success: res => {
+          console.log(res);
           this.globalData.openid = res.result.openid
           this.globalData.isNewPeople = res.result.isNewGuys
+          this.globalData.name = res.result.uname
+          this.globalData.isOP = res.result.isOP
+          this.globalData.distence = 0
         },
         fail: (res) => {
           wx.showToast({
-            title: '未登入，部分操作将受限',
+            title: '云开发出现了些问题，请联系管理员排查！',
             icon: "none"
           })
+          console.log(res);
         }
       })
     }
@@ -52,6 +62,8 @@ App({
     distence: null,
     openid: null,
     isNewPeople: null,
-    isOP: false
+    isOP: false,
+    right: false,
+    name: null
   }
 })

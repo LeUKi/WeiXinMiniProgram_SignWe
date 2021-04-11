@@ -2,33 +2,38 @@
 const { globalData } = getApp()
 const db = wx.cloud.database()
 const _ = db.command
+var t = false
+var tt = false
 Page({
   data: {
     chair: null,
     isFree: false,
     isMe: false,
-    distence: null
+    right: false,
+    lastN: "NULL",
+    isOpen: false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.hideLoading()
     wx.showLoading({
       title: "加载中",
       mask: true
     })
+    this.isOpenDoor()
     this.setData({
-      distence: globalData.distence,
+      right: globalData.right,
       chair: Number(options.chair)
     })
     //判断参数
     if (options.noDistence != undefined) {
       this.setData({
-        distence: 0.123456789
+        right: true
       })
     }
-
 
 
     //座位查询
@@ -38,17 +43,62 @@ Page({
         db.collection('chairs').where({ _id: "openid" }).get({
           success: (res1) => {
 
-            this.setData({
-              isFree: res.data[0].chairs[Number(options.chair) - 1],
-              isMe: globalData.openid == res1.data[0].openid[Number(options.chair) - 1]
+            db.collection('chairs').where({ _id: "names" }).get({
+              success: (res2) => {
+
+                this.setData({
+                  isFree: res.data[0].chairs[Number(options.chair) - 1],
+                  isMe: globalData.openid == res1.data[0].openid[Number(options.chair) - 1],
+                  lastN: res2.data[0].names[Number(options.chair) - 1]
+                })
+                wx.hideLoading()
+              }
             })
-            wx.hideLoading()
           }
         })
       }
     })
+
+    if (globalData.isOP) {
+      this.setData({
+        right: true,
+        notice: {
+          text: "当前为管理员状态，可无视范围打卡"
+        }
+      })
+    } else {
+      wx.onLocationChange(this._locationChangeFn);
+      db.collection('chairs').where({
+        _id: "notic"
+      }).get({
+        success: (res) => {
+          this.setData({
+            notice: res.data[0].notice
+          })
+        }
+      })
+    }
+
+  },
+  onShow: function () {
+    this.isOpenDoor()
   },
   check: async function () {
+
+    wx.requestSubscribeMessage({
+      tmplIds: ['YT5WwUDkbE2OaixVEi8xPzwvvyCOQH7Q_SJSb3wGq-c'],
+      complete(res) {
+        console.log(res);
+        tt = true
+        if (t) {
+          wx.redirectTo({
+            url: '/pages/check/check?chair=' + that.data.chair
+          })
+          t = false
+          tt = false
+        }
+      }
+    })
     const that = this
     await wx.showLoading({
       title: '正在确认',
@@ -116,13 +166,32 @@ Page({
       success: function () {
         //刷新
         wx.hideLoading()
-        wx.redirectTo({
-          url: '/pages/check/check?chair=' + that.data.chair
-        })
+        t = true
+        if (tt) {
+          wx.redirectTo({
+            url: '/pages/check/check?chair=' + that.data.chair
+          })
+          t = false
+          tt = false
+        }
       }
     })
   },
   signout: function () {
+    wx.requestSubscribeMessage({
+      tmplIds: ['YT5WwUDkbE2OaixVEi8xPzwvvyCOQH7Q_SJSb3wGq-c'],
+      complete(res) {
+        console.log(res);
+        tt = true
+        if (t) {
+          wx.redirectTo({
+            url: '/pages/check/check?chair=' + that.data.chair
+          })
+          t = false
+          tt = false
+        }
+      }
+    })
     wx.showLoading({
       title: '正在签退...',
       mask: true
@@ -133,14 +202,30 @@ Page({
     wx.cloud.callFunction({
       name: 'signout',
       data: {
-        time: T
+        time: T,
+        notice: {
+          text: "null"
+        },
       },
       success: function () {
-        //刷新
+        // wx.cloud.callFunction({
+        //   name: 'door',
+        //   complete(ress){
+        //     console.log(ress);
+        //   }
+        // })
         wx.hideLoading()
-        wx.redirectTo({
-          url: '/pages/check/check?chair=' + that.data.chair
-        })
+        t = true
+        if (tt) {
+          wx.redirectTo({
+            url: '/pages/check/check?chair=' + that.data.chair
+          })
+          t = false
+          tt = false
+        }
+
+        //刷新
+
       }
     })
     /////////////////////////////////////
@@ -159,5 +244,21 @@ Page({
     minute = minute < 10 ? "0" + minute : minute;
     second = second < 10 ? "0" + second : second;
     return year + "-" + month + "-" + date + " " + hour + ":" + minute + ":" + second;
+  },
+  notic: function () {
+    wx.navigateTo({
+      url: "/pages/notic/notic"
+    })
+  },
+  isOpenDoor: async function () {
+    const door = await db.collection('chairs').where({ _id: "openDoor" }).get()
+    this.setData({
+      isOpen: door.data[0].isOpen,
+    })
+  },
+  toOpenDoor: function () {
+    wx.navigateTo({
+      url: '/pages/openDoor/openDoor',
+    })
   }
 })

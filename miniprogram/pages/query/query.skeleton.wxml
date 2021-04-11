@@ -1,0 +1,122 @@
+<!--
+此文件为开发者工具生成，生成时间: 2020/12/13 下午3:20:18 
+使用方法：
+在 /Volumes/hub/WeChatXCX/SignMe/miniprogram/pages/query/query.wxml 引入模板
+
+```
+<import src="query.skeleton.wxml"/>
+<template is="skeleton" wx-if="{{loading}}" />
+```
+
+在 /Volumes/hub/WeChatXCX/SignMe/miniprogram/pages/query/query.wxss 中引入样式
+```
+@import "./query.skeleton.wxss";
+```
+
+更多详细信息可以参考文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/skeleton.html
+-->
+<template name="skeleton">
+  <view class="sk-container">
+    <view class="root">
+      <view class="chairs">
+        <view class="C" data-num="0">
+          <image class="c sk-image"></image>
+          <text class="sk-transparent sk-opacity">1</text>
+        </view>
+        <view class="C" data-num="1">
+          <image class="c sk-image"></image>
+          <text class="sk-transparent sk-opacity">2</text>
+        </view>
+        <view class="C" data-num="2">
+          <image class="c sk-image"></image>
+          <text class="sk-transparent sk-opacity">3</text>
+        </view>
+        <view class="C" data-num="3">
+          <image class="c sk-image"></image>
+          <text class="sk-transparent sk-opacity">4</text>
+        </view>
+        <view class="C" data-num="4">
+          <image class="c sk-image"></image>
+          <text class="sk-transparent sk-opacity">5</text>
+        </view>
+        <view class="C" data-num="5">
+          <image class="c sk-image"></image>
+          <text class="sk-transparent sk-opacity">6</text>
+        </view>
+        <view class="C" data-num="6">
+          <image class="c sk-image"></image>
+          <text class="sk-transparent sk-opacity">7</text>
+        </view>
+        <view class="C" data-num="7">
+          <image class="c sk-image"></image>
+          <text class="sk-transparent sk-opacity">8</text>
+        </view>
+        <view class="C" data-num="8">
+          <image class="c sk-image"></image>
+          <text class="sk-transparent sk-opacity">9</text>
+        </view>
+        <view class="C" data-num="9">
+          <image class="c sk-image"></image>
+          <text class="sk-transparent sk-text-18-7500-376 sk-text">10</text>
+        </view>
+        <view class="C" data-num="10">
+          <image class="c sk-image"></image>
+          <text class="sk-transparent sk-text-18-7500-789 sk-text">11</text>
+        </view>
+        <view class="C" data-num="11">
+          <image class="c sk-image"></image>
+          <text class="sk-transparent sk-text-18-7500-214 sk-text">12</text>
+        </view>
+        <view class="C" data-num="12">
+          <image class="c sk-image"></image>
+          <text class="sk-transparent sk-text-18-7500-437 sk-text">13</text>
+        </view>
+        <view class="C" data-num="13">
+          <image class="c sk-image"></image>
+          <text class="sk-transparent sk-text-18-7500-381 sk-text">14</text>
+        </view>
+        <view class="C" data-num="14">
+          <image class="c sk-image"></image>
+          <text class="sk-transparent sk-text-18-7500-509 sk-text">15</text>
+        </view>
+        <view class="C" data-num="15">
+          <image class="c sk-image"></image>
+          <text class="sk-transparent sk-text-18-7500-396 sk-text">16</text>
+        </view>
+        <view class="C" data-num="16">
+          <image class="c sk-image"></image>
+          <text class="sk-transparent sk-text-18-7500-869 sk-text">17</text>
+        </view>
+        <view class="C" data-num="17">
+          <image class="c sk-image"></image>
+          <text class="sk-transparent sk-text-18-7500-254 sk-text">18</text>
+        </view>
+        <view class="C" data-num="18">
+          <image class="c sk-image"></image>
+          <text class="sk-transparent sk-text-18-7500-935 sk-text">19</text>
+        </view>
+        <view class="C" data-num="19">
+          <image class="c sk-image"></image>
+          <text class="sk-transparent sk-text-18-7500-281 sk-text">20</text>
+        </view>
+        <view class="C" data-num="20">
+          <image class="c sk-image"></image>
+          <text class="sk-transparent sk-text-18-7500-714 sk-text">21</text>
+        </view>
+        <view class="C" data-num="21">
+          <image class="c sk-image"></image>
+          <text class="sk-transparent sk-text-18-7500-536 sk-text">22</text>
+        </view>
+        <view class="C" data-num="22">
+          <image class="c sk-image"></image>
+          <text class="sk-transparent sk-text-18-7500-745 sk-text">23</text>
+        </view>
+        <view class="C" data-num="23">
+          <image class="c sk-image"></image>
+          <text class="sk-transparent sk-text-18-7500-547 sk-text">24</text>
+        </view>
+      </view>
+      <view class="tips sk-transparent sk-text-18-7500-164 sk-text">绿色可座，红色有人</view>
+    </view>
+  </view>
+</template>

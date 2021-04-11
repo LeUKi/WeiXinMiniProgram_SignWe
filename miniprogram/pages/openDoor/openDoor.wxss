@@ -1,0 +1,23 @@
+/* pages/openDoor/openDoor.wxss */
+.root {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.tips {
+  color: #ccc;
+  margin: 40rpx;
+}
+
+.red {
+  color: red;
+  margin: 5rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+}
