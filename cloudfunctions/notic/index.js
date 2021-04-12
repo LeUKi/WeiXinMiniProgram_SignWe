@@ -22,14 +22,13 @@ exports.main = async (event, context) => {
   function getPlan() {
     const max = 2; //安排一天要打扫实验室的人数
     const arr = [
-       "梁波", "邱德生",   "颜昭琰", "林艺倍", 
-      "梁伟浩", "谭希铭", "李金鹏", "陈龙祥",
-      "张志汇", "刘江楠", "温芳芳", "罗振羽",
-      "黄柯源", "刘维睿", "陈慧琳", 
-      "梁业建", "蔡鹏杰", "李春江", "曾彬翔",
+        "邱德生",  "吴东骏" , "林艺倍", "梁业建", "陈龙祥",
+        "刘维睿",  "李金鹏",
+         "颜昭琰","罗振羽",
+       "温芳芳",         "陈慧琳", "李春江", "曾彬翔",
       "徐国源","陈双龙", "赖宇康", "吴文耀", 
        "杨天鸿", "陈嘉龙",
-       "张焙亮", "李泽恒","吴东骏"
+        "李泽恒",
     ]
     const length = arr.length;  // 实验室的总人数
   
@@ -148,7 +147,7 @@ exports.main = async (event, context) => {
         <a style="color: red;"></a>
       </div>
       <div style="display: flex;align-items: flex-start;justify-content:space-around;">
-        <img style="width:100%;" alt="这里应该有张图片" src="https://i.loli.net/2021/04/10/nEQfZd2MazCpo9O.png" />
+        <img style="width:100%;" alt="这里应该有张图片" src="https://i.loli.net/2021/04/11/2GNtqX4IpkK3cvE.png" />
       </div>
       <div>
       </div>

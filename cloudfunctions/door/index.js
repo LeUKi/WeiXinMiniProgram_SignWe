@@ -39,8 +39,18 @@ exports.main = async (event, context) => {
   const a = await db.collection('check').where({
     "_openid": wxContext.OPENID
   }).get()
+  console.log(a);
+  var fname
 
-
+  console.log(a.data);
+  if (a.data.length == 0) {
+    // a.data.push({ name="未命名" })
+    fname = "未命名"
+    console.log(1);
+  } else {
+    fname = a.data[0].name
+    console.log(2);
+  }
 
 
   var temp
@@ -50,7 +60,7 @@ exports.main = async (event, context) => {
     temp = await db.collection('chairs').doc("openDoor").update({
       data: {
         isOpen: false,
-        whoClose: a.data[0].name,
+        whoClose: fname,
       }
     })
 
@@ -61,7 +71,7 @@ exports.main = async (event, context) => {
     temp = await db.collection('chairs').doc("openDoor").update({
       data: {
         isOpen: true,
-        whoOpen: a.data[0].name,
+        whoOpen: fname,
       }
     })
     await db.collection('check').where({}).get().then(async res => {
@@ -72,7 +82,7 @@ exports.main = async (event, context) => {
           name: 'test',
           data: {
             oid: res.data[i]["_openid"],
-            name: a.data[0].name,
+            name: fname,
             stime: stime
           }
         })
@@ -83,8 +93,8 @@ exports.main = async (event, context) => {
   return {
     isOk: !door.data[0].isOpen,
     msg: temp,
-    e:event,
-    c:context
+    e: event,
+    c: context
 
   }
 }

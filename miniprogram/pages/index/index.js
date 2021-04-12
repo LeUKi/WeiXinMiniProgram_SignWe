@@ -149,7 +149,7 @@ Page({
   onMSG() {
     wx.getSetting({
       withSubscriptions: true,
-      success (res) {
+      success(res) {
         console.log(res.authSetting)
         // res.authSetting = {
         //   "scope.userInfo": true,
@@ -176,7 +176,6 @@ Page({
       confirmColor: "#ccc",
 
       success(res) {
-
         if (res.confirm) {
           wx.requestSubscribeMessage({
             tmplIds: ['YT5WwUDkbE2OaixVEi8xPzwvvyCOQH7Q_SJSb3wGq-c'],
@@ -184,6 +183,30 @@ Page({
               console.log(res);
               if (res['YT5WwUDkbE2OaixVEi8xPzwvvyCOQH7Q_SJSb3wGq-c'] === "accept") {
                 console.log("isok");
+                if (globalData.isNewPeople) {
+                  wx.showModal({
+                    title: '信息登记',
+                    content: '需要登记一些信息以订阅开门通知',
+                    cancelText: "取消",
+                    cancelColor: "red",
+                    confirmText: "前往登记",
+                    confirmColor: "#ccc",
+                    success(res) {
+                      if (res.confirm) {
+                        wx.navigateTo({
+                          url: "/pages/rename/rename"
+                        })
+                      } else if (res.cancel) {
+                        wx.showToast({
+                          title: '未登记用户将无法接收通知',
+                          icon: 'error',
+                          duration: 5000
+                        })
+                        
+                      }
+                    }
+                  })
+                }
               }
             }
           })
