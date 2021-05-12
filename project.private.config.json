@@ -1,4 +1,5 @@
 {
+  "setting": {},
   "condition": {
     "plugin": {
       "list": []
@@ -81,6 +82,12 @@
         {
           "name": "pages/openDoor/openDoor",
           "pathName": "pages/openDoor/openDoor",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/test/test",
+          "pathName": "pages/test/test",
           "scene": null
         }
       ]

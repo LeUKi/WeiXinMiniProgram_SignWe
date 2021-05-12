@@ -8,7 +8,8 @@
     "pages/admin/admin",
     "pages/notic/notic",
     "pages/data/data",
-    "pages/openDoor/openDoor"
+    "pages/openDoor/openDoor",
+    "pages/test/test"
   ],
   "window": {
     "backgroundColor": "#fefefe",

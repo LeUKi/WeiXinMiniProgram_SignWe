@@ -10,8 +10,8 @@ exports.main = async (event, context) => {
   switch (event.flag) {
     case 0:
       // page = 'pages/chair/chair'
-      page = 'pages/index/index'
-      scene = `chairIndex=${event.chairIndex}`
+      page = 'pages/check/check'
+      scene = `chair=${event.chairIndex}`
       break;
     case 1:
       page = 'pages/room/room'
