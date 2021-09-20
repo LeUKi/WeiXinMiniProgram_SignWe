@@ -1,5 +1,7 @@
 <!--pages/test/test.wxml-->
 <text>pages/test/test.wxml</text>
 <button type="primary" bindtap="getQR">获取二维码</button>
-<view></view>
+<view>{{url}}</view>
+
 <image style="width:300rpx;height:300rpx" show-menu-by-longpress src="data:image/png;base64,{{imgUrl}}"></image>
+<button type="primary" bindtap="getFiles">获取二维码</button>

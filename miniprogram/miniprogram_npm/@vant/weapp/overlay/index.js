@@ -6,12 +6,17 @@ component_1.VantComponent({
     show: Boolean,
     customStyle: String,
     duration: {
-      type: null,
+      type: Number,
+      optionalTypes: [String],
       value: 300,
     },
     zIndex: {
       type: Number,
       value: 1,
+    },
+    lockScroll: {
+      type: Boolean,
+      value: true,
     },
   },
   methods: {

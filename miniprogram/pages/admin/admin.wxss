@@ -1,40 +1,29 @@
-.out1 {
-  width: 100%;
-  padding-top: 25rpx;
-  height: 100%;
-  overflow: hidden;
-}
-
 .t1 {
   font-size: 45rpx;
   margin-left: 30rpx;
 
 }
 
-.t2 {
-  font-size: 25rpx;
-  color: grey;
-  margin-left: 20rpx;
-}
-
 .li {
   height: 100%;
-  overflow: scroll;
+  overflow: hidden;
 }
-.t33{
-  padding:50rpx;
+
+.t33 {
+  padding: 30rpx;
+  font-size: 45rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.t333 {
   font-size: 35rpx;
-  margin-bottom: 20rpx;
 }
-.t31 {
-  float: left;
-}
-.t32{
+
+.fr {
   float: right;
 }
-.fr{
-  float: right;
-}
+
 .p0 {
   color: rgb(231, 197, 0);
 }

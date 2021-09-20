@@ -10,6 +10,9 @@ let daysumNow
 exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext()
 
+  /**
+   * 获取初始
+   */
   const res = await db.collection('check').where({
     "_openid": wxContext.OPENID
   }).get()
@@ -20,6 +23,9 @@ exports.main = async (event, context) => {
     t1 = Math.floor(t1 = t1 / 60000)
     daysumNow = res.data[0].daysum + t1
 
+    /**
+     * 添加记录
+     */
     await db.collection('check').where({
       "_openid": wxContext.OPENID
     }).update({
@@ -41,19 +47,15 @@ exports.main = async (event, context) => {
       }
     })
 
-    const res2 = await db.collection('chairs').where({
-      _id: "chairs"
-    }).get()
-    let newC = res2.data[0].chairs
-    newC[res.data[0].finalChair - 1] = true
-
-    await db.collection('chairs').where({
-      _id: "chairs"
-    }).update({
+    /**
+     * chair更新chair
+     */
+    await db.collection('chairs').where({ _id: "chairs" }).update({
       data: {
-        chairs: newC
+        [`chairs.${res.data[0].finalChair - 1}`]: true
       }
     })
+
   } else {
     await db.collection('check').where({
       "_openid": wxContext.OPENID

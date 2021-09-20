@@ -1,0 +1,131 @@
+<van-tabs animated swipeable active="{{1}}">
+  <van-tab title="数据">
+
+    <view class="c">
+      <van-cell-group inset>
+        <van-cell clickable title="查看排名与记录" url='/pages/admin/admin' is-link>
+        </van-cell>
+      </van-cell-group>
+      <view class="k" />
+      <van-cell-group inset>
+
+        <van-cell bind:click='goFunc' data-fun="a1" clickable title="清除排名" label="保留历史记录">
+          <van-icon slot="right-icon" name="delete" class="custom-icon" size='50rpx' color='red' />
+        </van-cell>
+
+
+        <van-cell bind:click='goFunc' data-fun="a2" clickable label="删除排名和历史记录">
+          <view slot="title">
+            <view class="w">删除所有记录</view>
+          </view>
+          <van-icon slot="right-icon" name="warn-o" color='red' class="custom-icon" size='50rpx' />
+        </van-cell>
+      </van-cell-group>
+    </view>
+
+
+
+  </van-tab>
+  <van-tab title="公告" >
+
+    <view class="c">
+      <van-cell-group inset>
+        <van-cell clickable title="查看公告" url='/pages/notic/notic' is-link>
+        </van-cell>
+      </van-cell-group>
+      <view class="k" />
+      <van-cell-group inset>
+        <van-field model:value="{{ noticetit }}" autosize clearable label="公告标题" placeholder="不可过长" />
+        <van-field model:value="{{ noticecon }}" autosize type="textarea" label="公告内容" placeholder="支持HTML标签" />
+        <van-field model:value="{{ noticetim }}" autosize clearable label="署名或时间" placeholder="默认右对齐" />
+      </van-cell-group>
+
+      <view class="k" />
+      <van-cell-group inset>
+        <van-field model:value="{{ ntext }}" autosize clearable label="横幅内容" placeholder="展现在首页与签到页，过长将滚动" />
+        <van-field model:value="{{ ncolor }}" autosize clearable label="字体颜色"
+          placeholder="#FFC0CB/red/RGB(0,255,128)" />
+        <van-field model:value="{{ nbackground }}" autosize clearable label="背景颜色"
+          placeholder="#FFC0CB/red/RGB(0,255,128)" />
+        <van-field model:value="{{ nicon }}" autosize clearable label="左侧图标" placeholder="请查阅vant组件库内置图标" />
+      </van-cell-group>
+
+
+
+      <view class="k" />
+      <van-cell-group inset>
+
+        <van-cell bind:click='pushNotic' clickable title="确定发布" label="覆盖原有公告">
+          <van-icon slot="right-icon" name="checked" class="custom-icon" size='50rpx' color='#45b97c' />
+        </van-cell>
+
+
+      </van-cell-group>
+    </view>
+  </van-tab>
+
+  <van-tab title="座位">
+
+
+    <view class="c">
+      <van-cell-group inset>
+        <van-field model:value="{{ chairNum }}" required clearable label="座位号" type='number' placeholder="请输入座位号" />
+        <van-cell bind:click='goFunc' data-fun="c1" clickable title="将此座位强制释放" label="不保留学习记录且今日不可再打卡">
+          <van-icon slot="right-icon" name="close" class="custom-icon" size='50rpx' color='#ffc20e' />
+        </van-cell>
+      </van-cell-group>
+
+
+    </view>
+
+
+  </van-tab>
+  <van-tab title="用户与权限">
+
+
+
+
+    <view class="c">
+      <van-cell-group inset>
+        <van-field center model:value="{{ search }}" autosize clearable label="检索用户" placeholder="请输入用户名">
+          <van-icon slot="right-icon" name="search" size='50rpx' class="custom-icon" bind:click="userSearch" />
+        </van-field>
+      </van-cell-group>
+
+      <view class="k" />
+      <van-cell-group inset>
+        <van-cell title="OPENID" value="{{_openid}}" />
+        <van-cell title="姓名" value="{{name}}" />
+        <van-cell title="班级" value="{{class}}" />
+        <van-cell title="管理员权限" value="{{isOP?'是':'否'}}" />
+      </van-cell-group>
+
+
+
+      <view class="k" />
+      <van-cell-group inset>
+
+        <van-cell bind:click='goFunc' data-fun="d1" clickable title="赋管理员权限" label="新管理员需点击右上角重新载入小程序">
+          <van-icon slot="right-icon" name="friends" class="custom-icon" size='50rpx' color='#45b97c' />
+        </van-cell>
+        <van-cell bind:click='goFunc' data-fun="d2" clickable label="包括个人信息及学习记录，不可恢复">
+          <view slot="title">
+            <view class="w">删除此用户</view>
+          </view>
+          <van-icon slot="right-icon" name="delete" color='red' class="custom-icon" size='50rpx' />
+        </van-cell>
+
+      </van-cell-group>
+    </view>
+
+
+
+
+
+
+  </van-tab>
+</van-tabs>
+
+
+<van-action-sheet description="你知道你在做什么？" show="{{ a_show }}" actions="{{ a_actions }}" bind:close="a_onClose"
+  bind:select="a_onSelect" cancel-text="手滑了" />

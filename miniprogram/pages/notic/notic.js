@@ -7,35 +7,40 @@ Page({
    */
   data: {
     steps: [{
-        text: '今天',
-        desc: '描述信 息描述 信描述 信描信',
-      },
-      {
-        text: '明天',
-        desc: '描述信息',
-      },
-      {
-        text: '11月29日',
-        desc: '描述信息',
-      },
-      {
-        text: '11月30日',
-        desc: '描述信息',
-      },
-      {
-        text: '11月30日',
-        desc: '描述信息',
-      },
-      {
-        text: '11月30日',
-        desc: '描述信息',
-      },
-      {
-        text: '11月30日',
-        desc: '描述信息',
-      },
+      text: '今天',
+      desc: '描述信 息描述 信描述 信描信',
+    },
+    {
+      text: '明天',
+      desc: '描述信 息描述 信描述 信描信',
+    },
+    {
+      text: 'x月x日',
+      desc: '描述信 息描述 信描述 信描信',
+    },
+    {
+      text: 'x月x日',
+      desc: '描述信 息描述 信描述 信描信',
+    },
+    {
+      text: 'x月x日',
+
+      desc: '描述信 息描述 信描述 信描信',
+    },
+    {
+      text: 'x月x日',
+
+      desc: '描述信 息描述 信描述 信描信',
+    },
+    {
+      text: 'x月x日',
+
+      desc: '描述信 息描述 信描述 信描信',
+    },
     ],
-    notice2: ""
+    noticetit: "标题加载中",
+    noticecon: "内容加载中",
+    noticetim: "日期加载中"
   },
 
   /**
@@ -48,8 +53,10 @@ Page({
       success: (res) => {
         console.log(res);
         this.setData({
-          steps: res.data[0].steps,
-          notice2: res.data[0].notice2
+          // steps: res.data[0].steps,
+          noticetit: res.data[0].noticetit,
+          noticecon: res.data[0].noticecon,
+          noticetim: res.data[0].noticetim,
         })
       }
     })

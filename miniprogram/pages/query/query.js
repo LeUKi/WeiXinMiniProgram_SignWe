@@ -85,5 +85,12 @@ Page({
       name: 'test'
     })
     console.log(tt);
+  },
+  goadmin() {
+    if (this.data.isOP) {
+      wx.navigateTo({
+        url: "/pages/op/op"
+      })
+    }
   }
 })

@@ -1,8 +1,10 @@
-<van-cell-group title="以总时长降序，两个星期重置一次">
+<page-meta page-style="{{ show ? 'overflow: hidden;' : '' }}" />
+<van-cell-group title="定期重置">
+
   <van-cell center wx:for="{{all}}" wx:key="index" is-link value="总时长：{{item.allsum}}分钟"
     label="打卡{{item.check.length}}次" border="{{ false }}" bind:click="Clk" data-person="{{item}}">
     <view slot="title">
-      <view class="van-cell-text"><span class="p{{index}}">{{item.name}}</span>
+      <view class="van-cell-text"><span class="p{{index}}">{{item.name}} </span>
         <van-tag wx:if="{{!item.finalCheck}}" plain type="success">
           {{item.finalChair}}号座位</van-tag>
         <van-tag wx:if="{{item.finalCheck}}" plain color="#ccc">
@@ -11,16 +13,26 @@
     </view>
   </van-cell>
 </van-cell-group>
-<van-popup show="{{ show }}" round position="bottom" closeable custom-style="height: 80%" bind:close="onClose">
+<van-empty wx:if="{{!all.length!=0}}" description="无人上榜" class="e" />
+
+
+
+<van-popup show="{{ show }}" round position="bottom" custom-style="height: 80%" bind:close="onClose">
   <view class="out1">
-    <text class="t1">{{outName}}</text>
-    <text class="t2">{{outClass}}</text>
+    <!-- <text class="t1">{{outName}}</text>
+    <text class="t2">{{outClass}}</text> -->
     <view class="li">
       <view class="t33">
-        <text class="t31">今日时长 ➡️ {{outdaysum}}</text>
-        <text class="t32">{{outallsum}} ⬅️ 总计时长</text>
+        <view>{{outName}} | {{outClass}} </view>
+
+        <view class="t333"> 今日时长{{outdaysum}}分钟 | 总计时长{{outallsum}}分钟</view>
       </view>
-      <van-collapse accordion value="{{ activeName }}" bind:change="onChange">
+
+      <van-cell center wx:for="{{outcheck}}" wx:key="index" title="{{item.sfinalStartTime}}" value="{{item.howLong}}分钟"
+        label="{{item.chair}}号座位 | 打卡距离{{item.distence}}米" />
+
+
+      <!-- <van-collapse accordion value="{{ activeName }}" bind:change="onChange">
         <van-collapse-item wx:for="{{outcheck}}" wx:key="index" title="{{item.sfinalStartTime}}" name="{{index+1}}">
           <view>开始<text class="fr">{{item.startTime}}</text></view>
           <view>结束<text class="fr">{{item.stopTime}}</text></view>
@@ -28,7 +40,7 @@
           <view>打卡距离<text class="fr">{{item.distence}}</text></view>
           <view>座位号<text class="fr">{{item.chair}}</text></view>
         </van-collapse-item>
-      </van-collapse>
+      </van-collapse> -->
     </view>
   </view>
 </van-popup>

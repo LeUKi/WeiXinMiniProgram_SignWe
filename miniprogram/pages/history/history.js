@@ -8,6 +8,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    isNewGuys: false,
+    isOP: false,
     me: null,
     sumtime: null,
     yesterday: [
@@ -17,7 +19,12 @@ Page({
       { name: '第四' },
       { name: '第五' }]
   },
-
+  onLoad: function () {
+    this.setData({
+      isNewGuys: globalData.isNewPeople,
+      isOP: globalData.isOP
+    })
+  },
   onShow: function () {
     this.getMe()
   },
@@ -36,6 +43,8 @@ Page({
       success: res => {
         this.setData({
           me: res.data[0],
+          isNewGuys: globalData.isNewPeople,
+          isOP: globalData.isOP
         })
       }
     })
@@ -48,5 +57,19 @@ Page({
         })
       }
     })
+  },
+  gorename() {
+    if (this.data.isNewGuys) {
+      wx.navigateTo({
+        url: "/pages/rename/rename"
+      })
+    }
+  },
+  goadmin() {
+    if (this.data.isOP) {
+      wx.navigateTo({
+        url: "/pages/op/op"
+      })
+    }
   }
 })

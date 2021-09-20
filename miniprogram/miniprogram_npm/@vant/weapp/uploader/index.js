@@ -30,11 +30,13 @@ component_1.VantComponent({
         afterRead: null,
         beforeRead: null,
         previewSize: {
-          type: null,
+          type: Number,
+          optionalTypes: [String],
           value: 80,
         },
         name: {
-          type: [Number, String],
+          type: String,
+          optionalTypes: [Number],
           value: '',
         },
         accept: {
@@ -102,7 +104,6 @@ component_1.VantComponent({
             : true,
         });
       });
-      console.log(lists);
       this.setData({ lists: lists, isInCount: lists.length < maxCount });
     },
     getDetail: function (index) {
@@ -116,7 +117,6 @@ component_1.VantComponent({
       var _a = this.data,
         maxCount = _a.maxCount,
         multiple = _a.multiple,
-        accept = _a.accept,
         lists = _a.lists,
         disabled = _a.disabled;
       if (disabled) return;
@@ -127,7 +127,6 @@ component_1.VantComponent({
           })
         )
         .then(function (res) {
-          console.log(res);
           _this.onBeforeRead(multiple ? res : res[0]);
         })
         .catch(function (error) {
@@ -228,6 +227,13 @@ component_1.VantComponent({
         fail: function () {
           wx.showToast({ title: '预览视频失败', icon: 'none' });
         },
+      });
+    },
+    onPreviewFile: function (event) {
+      var index = event.currentTarget.dataset.index;
+      wx.openDocument({
+        filePath: this.data.lists[index].url,
+        showMenu: true,
       });
     },
     onClickPreview: function (event) {

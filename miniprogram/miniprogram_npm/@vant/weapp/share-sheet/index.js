@@ -6,7 +6,7 @@ component_1.VantComponent({
     // whether to show popup
     show: Boolean,
     // overlay custom style
-    overlayStyle: Object,
+    overlayStyle: String,
     // z-index
     zIndex: {
       type: Number,
@@ -35,7 +35,8 @@ component_1.VantComponent({
       value: true,
     },
     duration: {
-      type: null,
+      type: Number,
+      optionalTypes: [String],
       value: 300,
     },
   },

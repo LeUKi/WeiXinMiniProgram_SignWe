@@ -15,6 +15,7 @@ var __assign =
     return __assign.apply(this, arguments);
   };
 Object.defineProperty(exports, '__esModule', { value: true });
+var utils_1 = require('../common/utils');
 var component_1 = require('../common/component');
 var props_1 = require('./props');
 component_1.VantComponent({
@@ -34,7 +35,7 @@ component_1.VantComponent({
       isLink: Boolean,
       leftIcon: String,
       rightIcon: String,
-      autosize: [Boolean, Object],
+      autosize: null,
       required: Boolean,
       iconClass: String,
       clickable: Boolean,
@@ -52,6 +53,10 @@ component_1.VantComponent({
         type: Boolean,
         observer: 'setShowClear',
       },
+      clearTrigger: {
+        type: String,
+        value: 'focus',
+      },
       border: {
         type: Boolean,
         value: true,
@@ -59,6 +64,10 @@ component_1.VantComponent({
       titleWidth: {
         type: String,
         value: '6.2em',
+      },
+      clearIcon: {
+        type: String,
+        value: 'clear',
       },
     }
   ),
@@ -92,12 +101,15 @@ component_1.VantComponent({
     onClickIcon: function () {
       this.$emit('click-icon');
     },
+    onClickInput: function (event) {
+      this.$emit('click-input', event.detail);
+    },
     onClear: function () {
       var _this = this;
       this.setData({ innerValue: '' });
       this.value = '';
       this.setShowClear();
-      wx.nextTick(function () {
+      utils_1.nextTick(function () {
         _this.emitChange();
         _this.$emit('clear', '');
       });
@@ -126,7 +138,7 @@ component_1.VantComponent({
     emitChange: function () {
       var _this = this;
       this.setData({ value: this.value });
-      wx.nextTick(function () {
+      utils_1.nextTick(function () {
         _this.$emit('input', _this.value);
         _this.$emit('change', _this.value);
       });
@@ -134,13 +146,19 @@ component_1.VantComponent({
     setShowClear: function () {
       var _a = this.data,
         clearable = _a.clearable,
-        readonly = _a.readonly;
+        readonly = _a.readonly,
+        clearTrigger = _a.clearTrigger;
       var _b = this,
         focused = _b.focused,
         value = _b.value;
-      this.setData({
-        showClear: !!clearable && !!focused && !!value && !readonly,
-      });
+      var showClear = false;
+      if (clearable && !readonly) {
+        var hasValue = !!value;
+        var trigger =
+          clearTrigger === 'always' || (clearTrigger === 'focus' && focused);
+        showClear = hasValue && trigger;
+      }
+      this.setData({ showClear: showClear });
     },
     noop: function () {},
   },

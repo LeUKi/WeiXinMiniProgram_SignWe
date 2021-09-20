@@ -1,0 +1,20 @@
+/* pages/op/op.wxss */
+van-tab {
+  /* background-color: #ccc; */
+
+}
+
+page {
+  background-color:
+    #F0F3F6;
+}
+
+.c {
+  margin-top: 30rpx;
+  height: 90vh;
+}
+
+
+.k {
+  height: 20rpx;
+}

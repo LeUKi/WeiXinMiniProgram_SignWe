@@ -10,6 +10,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    isOP: false,
     right: globalData.right,
     circles: [{
       latitude: 21.15204729309082,
@@ -50,8 +51,13 @@ Page({
         }
       })
     }
+    this.setData({
+      isOP: globalData.isOP
+    })
     this.isOpenDoor()
-
+    wx.showShareMenu({
+      menus: ['shareAppMessage']
+    })
   },
   /**
    * 生命周期函数--监听页面显示
@@ -65,9 +71,10 @@ Page({
       globalData.right = true
       this.setData({
         right: true,
-        notice: {
-          text: "当前为管理员状态，可无视范围打卡"
-        }
+        isOP: true
+        // notice: {
+        //   text: "当前为管理员状态，可无视范围打卡"
+        // }
       })
     } else {
       wx.onLocationChange(this._locationChangeFn);
@@ -202,7 +209,7 @@ Page({
                           icon: 'error',
                           duration: 5000
                         })
-                        
+
                       }
                     }
                   })
@@ -215,6 +222,12 @@ Page({
         }
       }
     })
-
+  },
+  goadmin() {
+    if (this.data.isOP) {
+      wx.navigateTo({
+        url: "/pages/op/op"
+      })
+    }
   }
 })

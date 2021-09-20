@@ -26,16 +26,22 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: async function (options) {
-    wx.cloud.callFunction({
-      name: 'isOP',
-      success: (res) => {
-        console.log(res);
+    // wx.cloud.callFunction({
+    //   name: 'isOP',
+    //   success: (res) => {
+    //     console.log(res);
 
-      }
+    //   }
+    // })
+    wx.showLoading({
+      title: '拉取中',
     })
     wx.cloud.callFunction({
       name: 'getallsum',
       success: (res) => {
+        console.log(res);
+        wx.hideLoading({
+        })
         this.setData({
           all: res.result.data
         })

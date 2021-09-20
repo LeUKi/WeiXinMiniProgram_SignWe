@@ -5,60 +5,62 @@ cloud.init()
 const db = cloud.database()
 // 云函数入口函数
 let newC
-let newN
+
 let newI
 exports.main = async (event, context) => {
-  if (event.c==undefined) {
-  
-  
-  const wxContext = cloud.getWXContext()
+  if (event.c == undefined) {
 
-    const oldN = await db.collection('chairs').where({ _id: "names" }).get()
-    newN = oldN.data[0].names
+
+    const wxContext = cloud.getWXContext()
+
+    /**
+     * openid获取name
+     */
     const resN = await db.collection('check').where({
       "_openid": wxContext.OPENID
     }).get()
-    newN[event.finalChair - 1] = resN.data[0].name
+
+    /**
+     * chair更新name
+     */
     await db.collection('chairs').where({ _id: "names" }).update({
       data: {
-        names: newN
+        [`names.${event.finalChair - 1}`]: resN.data[0].name
       }
     })
 
+    /**
+     * 初始记录
+     */
+    await db.collection('check').where({ "_openid": wxContext.OPENID }).update({
+      data: {
+        finalStartTime: new Date(event.time),
+        finalDistence: event.distence,
+        finalCheck: false,
+        finalChair: event.finalChair,
+        sfinalStartTime: event.sfinalStartTime
+      }
+    })
 
-  const oldC = await db.collection('chairs').where({ _id: "chairs" }).get()
-  console.log(oldC);
-  newC = oldC.data[0].chairs
-  newC[event.finalChair - 1] = false
-  console.log(event,);
+    /**
+     * chair更新chair
+     */
+    await db.collection('chairs').where({ _id: "chairs" }).update({
+      data: {
+        [`chairs.${event.finalChair - 1}`]: false
+      }
+    })
 
+    /**
+     * chair更新openid
+     */
+    await db.collection('chairs').where({ _id: "openid" }).update({
+      data: {
+        [`openid.${event.finalChair - 1}`]: wxContext.OPENID
+      }
+    })
 
-  await db.collection('check').where({ "_openid": wxContext.OPENID }).update({
-    data: {
-      finalStartTime: new Date(event.time),
-      finalDistence: event.distence,
-      finalCheck: false,
-      finalChair: event.finalChair,
-      sfinalStartTime: event.sfinalStartTime
-    }
-  })
-  console.log(1);
-  const oldI = await db.collection('chairs').where({ _id: "openid" }).get()
-  newI = oldI.data[0].openid
-  newI[event.finalChair - 1] = wxContext.OPENID
-  console.log(1);
-  await db.collection('chairs').where({ _id: "chairs" }).update({
-    data: {
-      chairs: newC
-    }
-  })
-  console.log(12);
-  await db.collection('chairs').where({ _id: "openid" }).update({
-    data: {
-      openid: newI
-    }
-  })
-  }else{
+  } else {
     await db.collection('chairs').where({ _id: "chairs" }).update({
       data: {
         chairs: event.c

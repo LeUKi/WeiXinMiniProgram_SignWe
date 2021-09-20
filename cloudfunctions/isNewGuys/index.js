@@ -19,8 +19,8 @@ exports.main = async (event, context) => {
   var isNewGuys = a.data[0] == undefined ? true : false
   return {
     openid: wxContext.OPENID,
-    uname: isNewGuys ? "未命名": a.data[0].name,
+    uname: isNewGuys ? "未命名" : a.data[0].name,
     isNewGuys: isNewGuys,
-    isOP:op.includes(wxContext.OPENID),
+    isOP: a.data[0] == undefined ? false : a.data[0].isOP,
   }
 }

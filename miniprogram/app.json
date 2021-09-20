@@ -6,6 +6,7 @@
     "pages/query/query",
     "pages/rename/rename",
     "pages/admin/admin",
+    "pages/op/op",
     "pages/notic/notic",
     "pages/data/data",
     "pages/openDoor/openDoor",

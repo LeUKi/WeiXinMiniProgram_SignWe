@@ -203,9 +203,6 @@ Page({
       name: 'signout',
       data: {
         time: T,
-        notice: {
-          text: "null"
-        },
       },
       success: function () {
         // wx.cloud.callFunction({

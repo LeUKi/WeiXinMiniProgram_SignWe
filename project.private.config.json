@@ -54,7 +54,6 @@
           "scene": null
         },
         {
-          "id": -1,
           "name": "pages/history/history",
           "pathName": "pages/history/history",
           "query": "",
@@ -88,6 +87,19 @@
         {
           "name": "pages/test/test",
           "pathName": "pages/test/test",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/test/test",
+          "pathName": "pages/test/test",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/op/op",
+          "pathName": "pages/op/op",
+          "query": "",
           "scene": null
         }
       ]
