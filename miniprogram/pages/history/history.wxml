@@ -1,30 +1,58 @@
-<van-cell title="昨日排名(晚11:30更新)" value="总排名" is-link link-type="navigateTo"
-  url="/pages/admin/admin" border="{{ false }}">
+<van-cell title="总排名" is-link link-type="navigateTo" url="/pages/admin/admin" border="{{ false }}">
 </van-cell>
-<van-cell-group>
+<view class="rank">
+  <view class="r1">
+    <view class="r1t">昨</view>
+    <view class="r1t">日</view>
+    <view class="r1t">排</view>
+    <view class="r1t">名</view>
+  </view>
+
   <scroll-view scroll-anchoring class="ystday" scroll-x>
+
     <view class="ystdaynopeop" wx:if="{{yesterday.length==0}}">
-
       <view class="intxt"><text>未有人上榜呢</text></view>
-
     </view>
     <view class="ystdaypeop" wx:for="{{yesterday}}" wx:key="index">
       <view class="in">
-        <text class="nam">{{item.name}}</text>
-        <text class="min">{{item.daysum}}分钟</text></view>
+        <text class="nam p{{index}}">{{item.name}}</text>
+        <text class="min">{{item.daysum}}分钟</text>
+      </view>
     </view>
-
   </scroll-view>
+
   <!-- <van-grid column-num="{{yesterday.length}}">
     <van-grid-item class="ystdaybox" wx:for="{{yesterday}}" wx:key="index">
       <text class="nam">{{item.name}}</text>
       <text class="min">{{item.daysum}}分钟</text>
     </van-grid-item>
   </van-grid> -->
-</van-cell-group>
 
-<van-cell title="我的学习记录" value="今日总时长 {{me.daysum}} 分钟" border="{{ false }}">
+</view>
+<van-cell center>
+  <view slot="title" class="m" bindtap="gorename">
+    <view class="tx">
+      <open-data type="userAvatarUrl"></open-data>
+    </view>
+    <view class="n">
+      <view class="n1">{{isNewGuys?'未登记':me.name}}</view>
+      <view class="n2">{{isNewGuys?'点击前往登记':me.class}}</view>
+    </view>
+  </view>
+
+  <view wx:if="{{!isOP}}">
+    今日已学 {{me.allsum}} 分钟
+  </view>
+  <view wx:else bindtap="goadmin" class="op">
+    前往管理页面
+  </view>
+
 </van-cell>
-<van-cell center wx:key="index" wx:for="{{me.check}}" title="{{item.chair}}号座位" value="{{item.howLong}}分钟"
-  label="{{item.sfinalStartTime}}" border="{{ false }}">
+<van-cell title="历史记录" value="总时长 {{me.allsum}} 分钟" border="{{ false }}">
+
+</van-cell>
+<van-empty wx:if="{{me.check.length==0||!me.check}}" description="还未学习" class="e" />
+
+<van-cell center wx:key="index" wx:for="{{me.check}}" title="{{item.sfinalStartTime}}" value="{{item.howLong}}分钟"
+  label="{{item.chair}}号座位" border="{{ false }}">
 </van-cell>

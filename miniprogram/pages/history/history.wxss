@@ -8,10 +8,32 @@
   color: #ccc;
 }
 
+.r1 {
+  width: 7vw;
+  font-size: 24rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+}
+
+.r1t {
+  margin: -5rpx;
+}
+
+.rank {
+  display: flex;
+  flex-direction: row;
+  border-top: 1rpx solid rgb(241, 241, 241);
+  border-bottom: 1rpx solid rgb(216, 216, 216);
+}
+
 .ystday {
   white-space: nowrap;
   display: flex;
   background-color: #F0F3F6;
+  width: 93vw;
 }
 
 .in {
@@ -48,4 +70,48 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.p0 {
+  color: rgb(231, 197, 0);
+}
+
+.p1 {
+  color: rgb(197, 196, 196);
+}
+
+.p2 {
+  color: rgb(223, 104, 61);
+}
+
+.e {
+  width: 100%;
+}
+
+.tx {
+  width: 100rpx;
+  height: 100rpx;
+}
+
+.m {
+  display: flex;
+  align-items: center;
+}
+
+.n {
+  margin-left: 10rpx;
+}
+
+.n1 {
+  font-size: 35rpx;
+  margin-top: 8rpx;
+}
+
+.n2 {
+  font-size: 25rpx;
+  margin-top: -10rpx;
+
+}
+.op{
+  color: #6a60a9;
 }

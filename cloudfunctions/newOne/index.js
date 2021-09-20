@@ -21,6 +21,7 @@ exports.main = async (event, context) => {
       sfinalStartTime: null,
       finalDistence: null,
       daysum: 0,
+      isOP: false,
       allsum: 0
     }
   })

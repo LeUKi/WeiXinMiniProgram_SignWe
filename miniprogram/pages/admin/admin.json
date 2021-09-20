@@ -4,6 +4,11 @@
     "van-cell-group": "@vant/weapp/cell-group/index",
     "van-tag": "@vant/weapp/tag/index",
     "van-popup": "@vant/weapp/popup/index",
-    "van-divider": "@vant/weapp/divider/index"
-  }
+    "van-divider": "@vant/weapp/divider/index",
+    "van-collapse": "@vant/weapp/collapse/index",
+    "van-collapse-item": "@vant/weapp/collapse-item/index",
+    "van-empty": "@vant/weapp/empty/index"
+
+  },
+  "navigationBarTitleText":"总排名"
 }

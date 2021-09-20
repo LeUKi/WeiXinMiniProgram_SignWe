@@ -1,5 +1,7 @@
 // pages/query/query.js
-const { globalData } = getApp()
+const {
+  globalData
+} = getApp()
 const db = wx.cloud.database()
 const _ = db.command
 Page({
@@ -7,7 +9,6 @@ Page({
   data: {
     chairs: [],
     isOP: false,
-
   },
 
   onLoad: function (options) {
@@ -27,7 +28,9 @@ Page({
     }, 1000);
   },
   getC: function () {
-    db.collection('chairs').where({ _id: "chairs" }).get({
+    db.collection('chairs').where({
+      _id: "chairs"
+    }).get({
       success: (res) => {
         this.setData({
           chairs: res.data[0].chairs,
@@ -41,11 +44,10 @@ Page({
     this.setData({
       show: false
     })
-  }
-  ,
+  },
   clickme: function (res) {
+    const num = res.currentTarget.dataset.num + 1
     if (this.data.isOP) {
-      const num = res.currentTarget.dataset.num + 1
       wx.showModal({
         title: num + ' 号座位',
         content: '是否被恶意占用，确认可重置此座位状态',
@@ -71,6 +73,23 @@ Page({
             })
           }
         }
+      })
+    } else {
+      wx.navigateTo({
+        url: "/pages/check/check?chair=" + num
+      })
+    }
+  },
+  test: function () {
+    var tt = wx.cloud.callFunction({
+      name: 'test'
+    })
+    console.log(tt);
+  },
+  goadmin() {
+    if (this.data.isOP) {
+      wx.navigateTo({
+        url: "/pages/op/op"
       })
     }
   }

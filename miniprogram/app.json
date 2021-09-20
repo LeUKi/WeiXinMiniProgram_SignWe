@@ -5,15 +5,20 @@
     "pages/check/check",
     "pages/query/query",
     "pages/rename/rename",
-    "pages/admin/admin"
+    "pages/admin/admin",
+    "pages/op/op",
+    "pages/notic/notic",
+    "pages/data/data",
+    "pages/openDoor/openDoor",
+    "pages/test/test"
   ],
   "window": {
     "backgroundColor": "#fefefe",
     "backgroundTextStyle": "dark",
-    "backgroundColorTop":"#F0F3F6",
+    "backgroundColorTop": "#F0F3F6",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "SignWe",
-    "navigationBarTextStyle": "black"    
+    "navigationBarTextStyle": "black"
   },
   "tabBar": {
     "borderStyle": "white",
@@ -46,6 +51,5 @@
   },
   "sitemapLocation": "sitemap.json",
   "style": "v2",
-  "useExtendedLib": {
-  }
+  "useExtendedLib": {}
 }

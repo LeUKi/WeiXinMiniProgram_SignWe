@@ -1,0 +1,1 @@
+{"version":3,"sources":["index.js"],"names":[],"mappings":";;;;;;;AAAA;AACA;AACA;AACA;AACA;AACA;AACA;AACA","file":"index.js","sourcesContent":["\nmodule.exports = typeof setImmediate === 'function' ? setImmediate :\n\tfunction setImmediate() {\n\t\tvar args = [].slice.apply(arguments);\n\t\targs.splice(1, 0, 0);\n\t\tsetTimeout.apply(null, args);\n\t};\n"]}

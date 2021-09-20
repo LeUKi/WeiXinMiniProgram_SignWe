@@ -18,15 +18,11 @@ exports.main = async (event, context) => {
     }
   })
 
-  console.log(1);
-  const res2 = await db.collection('chairs').where({ _id: "chairs" }).get()
-  let newC = res2.data[0].chairs
-  newC[event.num - 1] = true
+
   await db.collection('chairs').where({ _id: "chairs" }).update({
     data: {
-      chairs: newC
+      [`chairs.${event.num - 1}`]: true
     }
   })
   return 666
-
 }

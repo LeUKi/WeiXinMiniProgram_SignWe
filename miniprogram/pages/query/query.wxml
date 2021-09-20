@@ -1,4 +1,5 @@
-<van-notice-bar wx:if="{{isOP}}" text="当前为管理员状态，可点击座位强制重置状态" />
+<van-notice-bar wx:if="{{isOP}}" color="#6a60a9" background="#a3daff" mode="link"
+    bind:click="goadmin" text="点击座位强制重置状态，点此横幅前往管理后台" />
 <view class="root">
   <view class="chairs">
     <view wx:for="{{chairs}}" bindtap="clickme" data-num="{{index}}" wx:key="index" class="C">
@@ -9,4 +10,5 @@
   </view>
   <view class="tips">绿色可座，红色有人</view>
   <view class="tips">每晚11:30自动重置状态</view>
+  <!-- <view bindtap="test">测试</view> -->
 </view>

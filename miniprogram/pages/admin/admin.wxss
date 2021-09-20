@@ -1,20 +1,37 @@
-.out1 {
-  width: 500rpx;
-  padding: 30rpx;
-}
-
 .t1 {
   font-size: 45rpx;
-  margin-left: 20rpx;
+  margin-left: 30rpx;
+
 }
 
-.t2 {
-  font-size: 25rpx;
-  color: grey;
-  margin: 20rpx;
+.li {
+  height: 100%;
+  overflow: hidden;
 }
 
-.t3 {
+.t33 {
+  padding: 30rpx;
+  font-size: 45rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.t333 {
   font-size: 35rpx;
-  margin: 10rpx;
+}
+
+.fr {
+  float: right;
+}
+
+.p0 {
+  color: rgb(231, 197, 0);
+}
+
+.p1 {
+  color: rgb(197, 196, 196);
+}
+
+.p2 {
+  color: rgb(223, 104, 61);
 }

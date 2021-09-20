@@ -1,22 +1,14 @@
-<map
- id="mymap"
- name="local"
- scale="17.5"
- longitude="110.302223046875"
- latitude="21.15154729309082"
- show-location="{{true}}"
- circles="{{circles}}"
- enable-zoom="{{false}}"
->
-<van-notice-bar wx:if="{{notice.text!='null'}}" color="{{notice.color}}" background="{{notice.background}}" left-icon="{{notice.icon}}" text="{{notice.text}}" />
-<button 
-bindtap="check"
-class="btn"
-type="primary"
-hover-stop-propagation
-disabled="{{!right}}"
->
-{{right?"打卡":"未进入范围"}}
-</button>
-</map>
+<van-nav-bar title="图灵 TEAM" left-text="{{'订阅开门通知'}}" bind:click-left="onMSG" safe-area-inset-top />
+<map id="mymap" name="local" scale="17.5" longitude="110.302223046875" latitude="21.15154729309082"
+  show-location="{{true}}" circles="{{circles}}" enable-zoom="{{false}}">
+  <van-notice-bar mode="link" scrollable="{{true}}" bind:click="notic" wx:if="{{notice.text!='null'}}"
+    color="{{notice.color}}" background="{{notice.background}}" left-icon="{{notice.icon}}" text="{{notice.text}}" />
 
+  <van-notice-bar color="{{!isOpen?'#fff':'#00917c'}}" background="{{!isOpen?'red':'#caf7e3'}}" mode="link"
+    bind:click="toOpenDoor" text="{{!isOpen?'暂未开门，请在群里询问或点此修正开门状态':'实验室已开门，点此修正开门状态'}}" />
+  <van-notice-bar wx:if="{{isOP}}" color="#6a60a9" background="#a3daff" mode="link" bind:click="goadmin"
+    text="可无视范围打卡，点此前往管理后台" />
+  <button bindtap="check" class="btn1" type="primary" hover-stop-propagation disabled="{{!right}}">
+    {{right?"打卡":"未进入范围"}}
+  </button>
+</map>

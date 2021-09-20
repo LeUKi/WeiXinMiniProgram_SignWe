@@ -1,29 +1,44 @@
+<van-notice-bar class="bar" mode="link" scrollable bind:click="notic" wx:if="{{notice.text!='null'}}"
+  color="{{notice.color}}" background="{{notice.background}}" left-icon="{{notice.icon}}" text="{{notice.text}}" />
+<van-notice-bar class="bar" color="{{!isOpen?'#fff':'#00917c'}}" background="{{!isOpen?'red':'#caf7e3'}}" mode="link"
+  bind:click="toOpenDoor" text="{{!isOpen?'暂未开门，请在群里询问或点此修正开门状态':'实验室已开门，点此修正开门状态'}}" />
 <view class="root">
-  <text>这是 {{chair}} 号座位</text>
-  <view class="{{isFree?'freeText':'unfreeText'}}">
-    {{isFree?"空闲":"正在使用"}}
-  </view>
+  <text class=" topp">这是 {{chair}} 号座位</text>
+  <text class="tips">上一位使用者：{{lastN}}</text>
 
-  <block wx:if="{{isFree}}">
-    <image class="chairs" src="/images/freeChair.png"></image>
+  <block wx:if="{{isOpen}}">
+    <view class="{{isFree?'freeText':'unfreeText'}}">
+      {{isFree?"空闲":"正在使用"}}
+    </view>
 
-    <button class="btn" bindtap="check" type="primary" disabled="{{!(distence<=80)|| distence==null}}">坐下</button>
-    <text class="tips" wx:if="{{!(distence<=80)|| distence==null}}">未获取到位置信息或不在范围内</text>
-    <text class="tips" wx:if="{{!(distence<=80)|| distence==null}}">请返回主界面重新定位</text>
+    <block wx:if="{{isFree}}">
+      <image class="chairs" src="/images/freeChair.png"></image>
+
+      <button class="btn" bindtap="check" type="primary" disabled="{{!right}}">坐下</button>
+      <text class="tips" wx:if="{{!right}}">未获取到位置信息或不在范围内</text>
+      <text class="tips" wx:if="{{!right}}">请返回主界面重新定位</text>
+    </block>
+
+    <block wx:if="{{!isFree&&isMe}}">
+      <image class="chairs" src="/images/unfreeChair.png"></image>
+      <button class="btn" bindtap="signout" type="warn">签退</button>
+      <text class="tips">每晚11:30将重置状态，请注意签退时间。</text>
+      <text class="tips">可扫任意座位码进入签退页面</text>
+      <text class="tips">当你是最后一个离开并需要关门时，请及时修正实验室开门状态</text>
+    </block>
+
+    <block wx:if="{{!isFree&&!isMe}}">
+      <image class="chairs" src="/images/unfreeChair.png"></image>
+      <button class="btn" disabled>他人已坐下</button>
+      <text class="tips">若确定座位虚占，请联系管理员。</text>
+      <button type="primary" size="mini" open-type="contact">联系师兄</button>
+    </block>
   </block>
-
-  <block wx:if="{{!isFree&&isMe}}">
-    <image class="chairs" src="/images/unfreeChair.png"></image>
-    <button class="btn" bindtap="signout" type="warn">签退</button>
-    <text class="tips">每晚10:45将重置状态，请注意签退时间。</text>
-    <text class="tips">离开时请带上所有物品。</text>
-    <text class="tips">可扫任意座位码进入签退页面</text>
+  <block wx:if="{{!isOpen}}">
+    <image class="chair2" src="/images/tab-3.png"></image>
+    <button type="warn" bindtap="toOpenDoor">修正开门状态</button>
+    <text class="tips">实验室未开门</text>
+    <text class="tips">签退必须在开门状态下签退</text>
   </block>
-
-  <block wx:if="{{!isFree&&!isMe}}">
-    <image class="chairs" src="/images/unfreeChair.png"></image>
-    <button class="btn" disabled>他人已坐下</button>
-    <text class="tips">若确定座位虚占，请联系管理员。</text>
-    <button type="primary" size="mini" open-type="contact">联系师兄</button>
-  </block>
+  <view class="bott"></view>
 </view>

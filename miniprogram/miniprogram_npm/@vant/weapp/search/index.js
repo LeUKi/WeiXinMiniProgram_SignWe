@@ -43,6 +43,14 @@ component_1.VantComponent({
       type: Boolean,
       value: true,
     },
+    clearTrigger: {
+      type: String,
+      value: 'focus',
+    },
+    clearIcon: {
+      type: String,
+      value: 'clear',
+    },
   },
   methods: {
     onChange: function (event) {
@@ -76,6 +84,9 @@ component_1.VantComponent({
     },
     onClear: function (event) {
       this.$emit('clear', event.detail);
+    },
+    onClickInput: function (event) {
+      this.$emit('click-input', event.detail);
     },
   },
 });

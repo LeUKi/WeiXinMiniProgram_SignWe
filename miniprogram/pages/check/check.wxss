@@ -1,5 +1,13 @@
+.bar{
+width: 100%;
+margin: 0;
+}
+.topp{
+  margin-top: 50rpx;
+}
 .root {
-  height: 100vh;
+  height: 100%;
+  /* flex-grow: 10; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -7,8 +15,13 @@
 }
 
 .chairs {
-  width: 200px;
-  height: 100px;
+  width: 360rpx;
+  height: 200rpx;
+}
+
+.chair2 {
+  width: 200rpx;
+  height: 200rpx;
 }
 
 .freeText {
@@ -26,4 +39,8 @@
   margin: 15rpx;
   font-size: 30rpx;
   color: #ccc;
+  text-align: center;
+}
+.bott{
+margin-bottom: 280rpx;
 }

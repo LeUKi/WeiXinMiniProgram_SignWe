@@ -1,0 +1,21 @@
+<!--pages/openDoor/openDoor.wxml-->
+<view class="root">
+  <text class="tips">
+    <block wx:if="{{isOpen}}">上一次开门：{{whoOpen}} </block>
+    <block wx:if="{{!isOpen}}">上一次关门：{{whoClose}} </block>
+  </text>
+  <view wx:if="{{!right}}" class="red">
+    <view>未获取到位置信息或不在范围内，</view>
+    <view>请返回主界面重新定位</view>
+    
+  </view>
+  <button bindtap="nextDoor" disabled="{{!right}}" type="{{isOpen?'warn':'primary'}}" hover-stop-propagation>
+    {{isOpen?"关门":"开门"}}
+  </button>
+  <text class="tips">
+    每晚11:30自动关门，第二天需手动开门
+
+  </text>
+
+
+</view>

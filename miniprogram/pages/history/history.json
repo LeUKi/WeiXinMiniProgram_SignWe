@@ -3,7 +3,10 @@
     "van-cell": "@vant/weapp/cell/index",
     "van-cell-group": "@vant/weapp/cell-group/index",
     "van-grid": "@vant/weapp/grid/index",
-    "van-grid-item": "@vant/weapp/grid-item/index"
+    "van-grid-item": "@vant/weapp/grid-item/index",
+    "van-empty": "@vant/weapp/empty/index"
+
   },
+  "navigationBarTitleText": "图灵实验室打卡记录",
   "enablePullDownRefresh": true
 }

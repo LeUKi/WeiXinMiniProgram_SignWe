@@ -4,6 +4,11 @@
   width: 100vw;
   display: flex; 
 }
-.btn{
-  top: 75vh;
+.btn1{
+  top: 60vh;
+  /* display:inline-block; */
+}
+.btn2{
+  /* display:inline-block; */
+  top: 0;
 }

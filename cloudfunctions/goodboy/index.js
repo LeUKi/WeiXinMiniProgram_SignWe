@@ -24,7 +24,7 @@ exports.main = async (event, context) => {
       yesterday: yesterday
     }
   })
- await db.collection('chairs').where({ _id: "chairs" }).update({
+  await db.collection('chairs').where({ _id: "chairs" }).update({
     data: {
       chairs: newC
     }
@@ -36,6 +36,12 @@ exports.main = async (event, context) => {
         daysum: 0
       }
     })
+  await db.collection('chairs').doc("openDoor").update({
+    data: {
+      isOpen: false,
+      whoClose: '11:30 自动关闭',
+    }
+  })
 
   return "666"
 }
