@@ -58,6 +58,20 @@ Page({
     wx.showShareMenu({
       menus: ['shareAppMessage']
     })
+
+
+  },
+  //右上角分享功能
+  onShareAppMessage() {
+    return {
+      title: '图灵实验室打卡',
+      path: '/pages/index/index',//用户点开后的默认页面，我默认为首页
+      imageUrl: "/images/turing.jpg",//自定义图片的地址
+      success(res) {
+        console.log(res);
+        console.log('分享成功！')
+      }
+    }
   },
   /**
    * 生命周期函数--监听页面显示

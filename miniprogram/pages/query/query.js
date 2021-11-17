@@ -32,6 +32,7 @@ Page({
       _id: "chairs"
     }).get({
       success: (res) => {
+        console.log(res);
         this.setData({
           chairs: res.data[0].chairs,
 
@@ -50,11 +51,11 @@ Page({
     if (this.data.isOP) {
       wx.showModal({
         title: num + ' 号座位',
-        content: '是否被恶意占用，确认可重置此座位状态',
-        cancelText: "手滑了",
-        confirmText: "我确定",
+        content: '强制释放座位会导致占用者当天无法再次打卡，状态将持续至当日结算',
+        cancelText: "查看座位",
+        confirmText: "释放座位",
         confirmColor: "#FA5151",
-        cancelColor: "#999999",
+        // cancelColor: "#999999",
         success(res1) {
           if (res1.confirm) {
             wx.showLoading({
@@ -70,6 +71,10 @@ Page({
                 wx.startPullDownRefresh()
                 wx.hideLoading()
               }
+            })
+          }else{
+            wx.navigateTo({
+              url: "/pages/check/check?chair=" + num
             })
           }
         }
