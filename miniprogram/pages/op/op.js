@@ -284,5 +284,17 @@ Page({
         })
       }
     })
-  }
+  },
+  //右上角分享功能
+  onShareAppMessage() {
+    return {
+      title: '管理后台(切勿随意分享)',
+      path: '/pages/op/op',//用户点开后的默认页面，我默认为首页
+      imageUrl: "/images/turing.jpg",//自定义图片的地址
+      success(res) {
+        console.log(res);
+        console.log('分享成功！')
+      }
+    }
+  },
 })
